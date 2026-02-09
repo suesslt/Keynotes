@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		B58A096A2F38C8B900CF976B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = B58A09692F38C8B900CF976B /* README.md */; };
+		B58A09762F38C99F00CF976B /* QUICKSTART.md in Resources */ = {isa = PBXBuildFile; fileRef = B58A09752F38C99F00CF976B /* QUICKSTART.md */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		B58A09432F38C7AE00CF976B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +32,8 @@
 		B58A09332F38C7AD00CF976B /* Keynotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Keynotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B58A09422F38C7AE00CF976B /* KeynotesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeynotesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B58A094C2F38C7AE00CF976B /* KeynotesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeynotesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B58A09692F38C8B900CF976B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		B58A09752F38C99F00CF976B /* QUICKSTART.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = QUICKSTART.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -79,6 +86,8 @@
 				B58A09452F38C7AE00CF976B /* KeynotesTests */,
 				B58A094F2F38C7AE00CF976B /* KeynotesUITests */,
 				B58A09342F38C7AD00CF976B /* Products */,
+				B58A09752F38C99F00CF976B /* QUICKSTART.md */,
+				B58A09692F38C8B900CF976B /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -212,6 +221,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B58A096A2F38C8B900CF976B /* README.md in Resources */,
+				B58A09762F38C99F00CF976B /* QUICKSTART.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
