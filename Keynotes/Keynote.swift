@@ -16,14 +16,7 @@ final class Keynote {
     var keynoteTheme: String = ""
     var duration: Double = 60 // in Minuten (CloudKit-kompatibel)
     var clientOrganization: String = ""
-    
-    // DEPRECATED: Alte Kontakt-ID (gerätespezifisch, wird nicht mehr verwendet)
-    // Wird behalten für Migration, aber nicht mehr genutzt
-    var primaryContactID: String?
-    
-    // NEU: iCloud-synchronisierbare Kontaktdaten
     var primaryContact: KeynoteContact?
-    
     var agreedFeeInCents: Int64 = 0 // Honorar in Cents/Rappen gespeichert
     var targetAudience: String = ""
     var location: String = ""

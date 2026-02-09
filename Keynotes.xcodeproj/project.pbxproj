@@ -17,6 +17,7 @@
 		B5D07C0E2F3A2087007CB2FF /* ARCHITECTURE_CONTACT_SYNC.md in Resources */ = {isa = PBXBuildFile; fileRef = B5D07C0D2F3A2087007CB2FF /* ARCHITECTURE_CONTACT_SYNC.md */; };
 		B5D07C102F3A20BA007CB2FF /* TESTING_QUICKSTART.md in Resources */ = {isa = PBXBuildFile; fileRef = B5D07C0F2F3A20BA007CB2FF /* TESTING_QUICKSTART.md */; };
 		B5D07C122F3A20E5007CB2FF /* README_IMPLEMENTATION.md in Resources */ = {isa = PBXBuildFile; fileRef = B5D07C112F3A20E5007CB2FF /* README_IMPLEMENTATION.md */; };
+		B5D07C1E2F3A234D007CB2FF /* CLEANUP_GUIDE.md in Resources */ = {isa = PBXBuildFile; fileRef = B5D07C1D2F3A234D007CB2FF /* CLEANUP_GUIDE.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		B5D07C0D2F3A2087007CB2FF /* ARCHITECTURE_CONTACT_SYNC.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ARCHITECTURE_CONTACT_SYNC.md; sourceTree = "<group>"; };
 		B5D07C0F2F3A20BA007CB2FF /* TESTING_QUICKSTART.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TESTING_QUICKSTART.md; sourceTree = "<group>"; };
 		B5D07C112F3A20E5007CB2FF /* README_IMPLEMENTATION.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README_IMPLEMENTATION.md; sourceTree = "<group>"; };
+		B5D07C1D2F3A234D007CB2FF /* CLEANUP_GUIDE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CLEANUP_GUIDE.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -125,6 +127,7 @@
 				B5D07C0D2F3A2087007CB2FF /* ARCHITECTURE_CONTACT_SYNC.md */,
 				B5D07C0F2F3A20BA007CB2FF /* TESTING_QUICKSTART.md */,
 				B5D07C112F3A20E5007CB2FF /* README_IMPLEMENTATION.md */,
+				B5D07C1D2F3A234D007CB2FF /* CLEANUP_GUIDE.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -267,6 +270,7 @@
 				B5D07C102F3A20BA007CB2FF /* TESTING_QUICKSTART.md in Resources */,
 				B5D07C0A2F3A2022007CB2FF /* CONTACT_SYNC_SOLUTION.md in Resources */,
 				B5D07C0E2F3A2087007CB2FF /* ARCHITECTURE_CONTACT_SYNC.md in Resources */,
+				B5D07C1E2F3A234D007CB2FF /* CLEANUP_GUIDE.md in Resources */,
 				B5D07C0C2F3A204B007CB2FF /* CHANGELOG_CONTACT_SYNC.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

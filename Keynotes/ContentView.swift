@@ -17,9 +17,7 @@ struct ContentView: View {
     @State private var selectedKeynote: Keynote?
     @State private var statusFilter: KeynoteStatus?
     @State private var showingStats = false
-    @State private var showingCloudKitStatus = false
     @StateObject private var calendarService = CalendarService()
-    @StateObject private var contactsService = ContactsService()
     @StateObject private var errorHandler = ErrorHandler()
 
     var filteredKeynotes: [Keynote] {
@@ -49,7 +47,7 @@ struct ContentView: View {
             List {
                 ForEach(filteredKeynotes) { keynote in
                     NavigationLink(value: keynote) {
-                        KeynoteRowView(keynote: keynote, contactsService: contactsService)
+                        KeynoteRowView(keynote: keynote)
                     }
                     .swipeActions(edge: .trailing, allowsFullSwipe: false) {
                         Button(role: .destructive) {
@@ -84,12 +82,6 @@ struct ContentView: View {
             .navigationTitle("Keynotes")
             .searchable(text: $searchText, prompt: "Suchen...")
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: { showingCloudKitStatus = true }) {
-                        Label("iCloud Status", systemImage: "icloud.fill")
-                    }
-                }
-                
                 ToolbarItem(placement: .navigationBarLeading) {
                     Menu {
                         Button(action: { statusFilter = nil }) {
@@ -154,18 +146,6 @@ struct ContentView: View {
                         }
                 }
             }
-            .sheet(isPresented: $showingCloudKitStatus) {
-                NavigationStack {
-                    CloudKitStatusView()
-                        .toolbar {
-                            ToolbarItem(placement: .confirmationAction) {
-                                Button("Fertig") {
-                                    showingCloudKitStatus = false
-                                }
-                            }
-                        }
-                }
-            }
         } detail: {
             ContentUnavailableView(
                 "Wähle eine Keynote",
@@ -175,7 +155,6 @@ struct ContentView: View {
         }
         .task {
             _ = await calendarService.requestAccess()
-            _ = await contactsService.requestAccess()
         }
         .errorAlert(errorHandler: errorHandler)
     }
@@ -196,23 +175,12 @@ struct ContentView: View {
 // MARK: - Keynote Row View
 struct KeynoteRowView: View {
     let keynote: Keynote
-    @ObservedObject var contactsService: ContactsService
-    
-    @State private var contactName: String?
     
     var body: some View {
         KeynoteListItemView(
             keynote: keynote,
-            contactName: contactName
+            contactName: keynote.primaryContact?.fullName
         )
-        .task(id: keynote.primaryContactID) {
-            // Lade Kontaktdaten asynchron und nur bei Änderungen
-            if let contactID = keynote.primaryContactID {
-                contactName = contactsService.getContactName(identifier: contactID)
-            } else {
-                contactName = nil
-            }
-        }
     }
 }
 

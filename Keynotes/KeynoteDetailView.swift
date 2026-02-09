@@ -60,10 +60,7 @@ struct KeynoteDetailView: View {
             ContactPickerView(
                 contactsService: contactsService,
                 onContactSelected: { keynoteContact in
-                    // Setze den neuen KeynoteContact
                     keynote.primaryContact = keynoteContact
-                    // Lösche alte ID falls vorhanden
-                    keynote.primaryContactID = nil
                 }
             )
         }
@@ -142,34 +139,6 @@ struct KeynoteDetailView: View {
                     
                     Button("Ändern") {
                         showingContactPicker = true
-                    }
-                }
-            } else if let oldContactID = keynote.primaryContactID {
-                // Fallback für alte Kontakt-IDs (sollte nur während Migration vorkommen)
-                HStack {
-                    VStack(alignment: .leading) {
-                        Text(contactsService.getContactName(identifier: oldContactID))
-                            .font(.headline)
-                        if let email = contactsService.getContactEmail(identifier: oldContactID) {
-                            Text(email)
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
-                        }
-                        if let phone = contactsService.getContactPhone(identifier: oldContactID) {
-                            Text(phone)
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
-                        }
-                    }
-                    
-                    Spacer()
-                    
-                    Button("Migrieren") {
-                        // Migriere diesen Kontakt sofort
-                        if let keynoteContact = contactsService.createKeynoteContact(from: oldContactID) {
-                            keynote.primaryContact = keynoteContact
-                            keynote.primaryContactID = nil
-                        }
                     }
                 }
             } else {
