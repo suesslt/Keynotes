@@ -36,3 +36,36 @@ struct KeynotesApp: App {
         .modelContainer(sharedModelContainer)
     }
 }
+// MARK: - CloudKit Sync Status (Optional)
+// Wenn du den Sync-Status überwachen möchtest, kannst du dies hinzufügen:
+/*
+import CloudKit
+
+@MainActor
+class CloudKitSyncMonitor: ObservableObject {
+    @Published var syncStatus: String = "Unbekannt"
+    @Published var lastSyncDate: Date?
+    
+    func checkAccountStatus() {
+        CKContainer.default().accountStatus { status, error in
+            DispatchQueue.main.async {
+                switch status {
+                case .available:
+                    self.syncStatus = "iCloud verfügbar"
+                case .noAccount:
+                    self.syncStatus = "Nicht bei iCloud angemeldet"
+                case .restricted:
+                    self.syncStatus = "iCloud eingeschränkt"
+                case .couldNotDetermine:
+                    self.syncStatus = "Status unbekannt"
+                case .temporarilyUnavailable:
+                    self.syncStatus = "Temporär nicht verfügbar"
+                @unknown default:
+                    self.syncStatus = "Unbekannt"
+                }
+            }
+        }
+    }
+}
+*/
+

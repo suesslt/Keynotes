@@ -17,6 +17,7 @@ struct ContentView: View {
     @State private var selectedKeynote: Keynote?
     @State private var statusFilter: KeynoteStatus?
     @State private var showingStats = false
+    @State private var showingCloudKitStatus = false
     @StateObject private var calendarService = CalendarService()
     @StateObject private var contactsService = ContactsService()
     @StateObject private var errorHandler = ErrorHandler()
@@ -84,6 +85,12 @@ struct ContentView: View {
             .searchable(text: $searchText, prompt: "Suchen...")
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: { showingCloudKitStatus = true }) {
+                        Label("iCloud Status", systemImage: "icloud.fill")
+                    }
+                }
+                
+                ToolbarItem(placement: .navigationBarLeading) {
                     Menu {
                         Button(action: { statusFilter = nil }) {
                             Label("Alle", systemImage: statusFilter == nil ? "checkmark" : "")
@@ -142,6 +149,18 @@ struct ContentView: View {
                             ToolbarItem(placement: .confirmationAction) {
                                 Button("Fertig") {
                                     showingStats = false
+                                }
+                            }
+                        }
+                }
+            }
+            .sheet(isPresented: $showingCloudKitStatus) {
+                NavigationStack {
+                    CloudKitStatusView()
+                        .toolbar {
+                            ToolbarItem(placement: .confirmationAction) {
+                                Button("Fertig") {
+                                    showingCloudKitStatus = false
                                 }
                             }
                         }

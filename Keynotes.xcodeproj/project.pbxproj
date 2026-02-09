@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B57AA9A42F39DD9F00582866 /* ICLOUD_SETUP.md in Resources */ = {isa = PBXBuildFile; fileRef = B57AA9A32F39DD9F00582866 /* ICLOUD_SETUP.md */; };
+		B57AA9A62F39DDB300582866 /* ICLOUD_CHECKLIST.md in Resources */ = {isa = PBXBuildFile; fileRef = B57AA9A52F39DDB300582866 /* ICLOUD_CHECKLIST.md */; };
+		B57AA9AA2F39E02500582866 /* CLOUDKIT_DASHBOARD_FAQ.md in Resources */ = {isa = PBXBuildFile; fileRef = B57AA9A92F39E02500582866 /* CLOUDKIT_DASHBOARD_FAQ.md */; };
 		B58A096A2F38C8B900CF976B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = B58A09692F38C8B900CF976B /* README.md */; };
 		B58A09762F38C99F00CF976B /* QUICKSTART.md in Resources */ = {isa = PBXBuildFile; fileRef = B58A09752F38C99F00CF976B /* QUICKSTART.md */; };
 /* End PBXBuildFile section */
@@ -29,6 +32,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B57AA9A32F39DD9F00582866 /* ICLOUD_SETUP.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ICLOUD_SETUP.md; sourceTree = "<group>"; };
+		B57AA9A52F39DDB300582866 /* ICLOUD_CHECKLIST.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ICLOUD_CHECKLIST.md; sourceTree = "<group>"; };
+		B57AA9A92F39E02500582866 /* CLOUDKIT_DASHBOARD_FAQ.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CLOUDKIT_DASHBOARD_FAQ.md; sourceTree = "<group>"; };
 		B58A09332F38C7AD00CF976B /* Keynotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Keynotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B58A09422F38C7AE00CF976B /* KeynotesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeynotesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B58A094C2F38C7AE00CF976B /* KeynotesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeynotesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,6 +107,9 @@
 				B58A09342F38C7AD00CF976B /* Products */,
 				B58A09752F38C99F00CF976B /* QUICKSTART.md */,
 				B58A09692F38C8B900CF976B /* README.md */,
+				B57AA9A52F39DDB300582866 /* ICLOUD_CHECKLIST.md */,
+				B57AA9A32F39DD9F00582866 /* ICLOUD_SETUP.md */,
+				B57AA9A92F39E02500582866 /* CLOUDKIT_DASHBOARD_FAQ.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -234,7 +243,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B57AA9A62F39DDB300582866 /* ICLOUD_CHECKLIST.md in Resources */,
 				B58A096A2F38C8B900CF976B /* README.md in Resources */,
+				B57AA9AA2F39E02500582866 /* CLOUDKIT_DASHBOARD_FAQ.md in Resources */,
+				B57AA9A42F39DD9F00582866 /* ICLOUD_SETUP.md in Resources */,
 				B58A09762F38C99F00CF976B /* QUICKSTART.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

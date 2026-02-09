@@ -12,6 +12,7 @@ Die Keynotes App ist eine umfassende iOS-Anwendung zur professionellen Verwaltun
 - ✅ **Verfügbarkeitsprüfung** anhand des Kalenders
 - ✅ **Statistiken** für Übersicht über alle Auftritte und Finanzen
 - ✅ **SwiftData Persistenz** mit automatischer iCloud Sync-Unterstützung
+- ✅ **iCloud Status Monitor** zur Überprüfung der Synchronisation
 - ✅ **Modern SwiftUI** mit NavigationSplitView für iPad-Optimierung
 - ✅ **Error Handling** mit benutzerfreundlichen Fehlermeldungen
 
@@ -30,6 +31,7 @@ Die Keynotes App ist eine umfassende iOS-Anwendung zur professionellen Verwaltun
 - **KeynoteDetailView.swift** - Detail/Edit View für einzelne Keynotes
 - **KeynoteStatsView.swift** - Statistiken und Übersicht
 - **KeynoteListItemView.swift** - Wiederverwendbare List Item Komponente
+- **CloudKitStatusView.swift** - iCloud Sync Status Monitor
 
 ### Utilities
 - **ErrorHandler.swift** - Zentrale Fehlerbehandlung
@@ -37,7 +39,31 @@ Die Keynotes App ist eine umfassende iOS-Anwendung zur professionellen Verwaltun
 
 ## 🚀 Setup
 
-### 1. Info.plist Einträge (WICHTIG!)
+### 1. iCloud/CloudKit Konfiguration (WICHTIG!)
+
+Die App nutzt **SwiftData mit CloudKit** für automatische iCloud-Synchronisation. Um dies zu aktivieren, musst du:
+
+#### In Xcode:
+1. Wähle dein Projekt im Navigator
+2. Wähle dein Target
+3. Gehe zum Tab **"Signing & Capabilities"**
+4. Klicke auf **"+ Capability"**
+5. Füge **"iCloud"** hinzu
+6. Aktiviere die Checkbox **"CloudKit"**
+7. Xcode erstellt automatisch einen CloudKit Container (z.B. `iCloud.com.yourteam.Keynotes`)
+8. Stelle sicher, dass der Container ausgewählt ist
+
+#### Optional (aber empfohlen):
+9. Füge **"Background Modes"** Capability hinzu
+10. Aktiviere **"Remote notifications"** (erlaubt CloudKit, deine App über Änderungen zu informieren)
+
+#### Testen:
+- Installiere die App auf zwei Geräten mit demselben iCloud Account
+- Erstelle eine Keynote auf Gerät 1
+- Nach wenigen Sekunden sollte sie auf Gerät 2 erscheinen
+- Nutze den **iCloud Status** Button in der App, um den Sync-Status zu prüfen
+
+### 2. Info.plist Einträge (WICHTIG!)
 Du **musst** folgende Privacy-Beschreibungen in deine `Info.plist` einfügen:
 
 #### Über Xcode UI:
@@ -61,10 +87,10 @@ Privacy - Contacts Usage Description
 
 Alternativ kannst du die Werte aus `Info.plist.example` kopieren.
 
-### 2. Minimum iOS Version
+### 3. Minimum iOS Version
 - **iOS 17.0+** erforderlich (wegen SwiftData)
 
-### 3. Build Settings
+### 4. Build Settings
 Keine besonderen Build Settings erforderlich. Die Standard-Einstellungen genügen.
 
 ## 📱 Verwendung
@@ -113,6 +139,19 @@ Keine besonderen Build Settings erforderlich. Die Standard-Einstellungen genüge
    - Anzahl Keynotes (gesamt, dieses Jahr, anstehend)
    - Finanz-Übersicht (bestätigt, offen, bezahlt)
    - Status-Verteilung
+
+### iCloud Sync Status prüfen
+1. Tippe auf das **iCloud-Symbol** in der Toolbar (links)
+2. Sieh den aktuellen Synchronisationsstatus
+3. Prüfe ob du bei iCloud angemeldet bist
+4. Die Daten synchronisieren automatisch zwischen allen deinen Geräten
+
+**Wie funktioniert iCloud Sync?**
+- Alle Änderungen werden automatisch synchronisiert
+- Funktioniert auf iPhone, iPad und Mac (mit derselben Apple ID)
+- Keine manuelle Aktion erforderlich
+- Offline-Änderungen werden synchronisiert, sobald Internet verfügbar ist
+- Konflikte werden automatisch aufgelöst (letzte Änderung gewinnt)
 
 ## 📊 Datenmodell
 
@@ -205,6 +244,19 @@ Mögliche Features für zukünftige Versionen:
 - [ ] **SharePlay** für gemeinsame Planung mit Team
 
 ## 🐛 Troubleshooting
+
+### "iCloud Sync funktioniert nicht"
+→ Prüfe in der App über das iCloud-Symbol ob du angemeldet bist
+→ Gehe zu iOS Einstellungen → [Dein Name] → iCloud → iCloud Drive (muss aktiviert sein)
+→ Stelle sicher, dass "Keynotes" in iCloud Drive aktiviert ist
+→ Prüfe deine Internetverbindung
+→ Warte ein paar Minuten, Sync ist nicht immer sofort
+→ Stelle sicher, dass beide Geräte dieselbe Apple ID nutzen
+
+### "Daten synchronisieren nicht zwischen Geräten"
+→ Force-Close die App auf beiden Geräten und öffne sie neu
+→ Prüfe ob genügend iCloud Speicherplatz verfügbar ist (Einstellungen → iCloud → Speicher verwalten)
+→ Unter iOS Einstellungen → [Dein Name] → iCloud → Mobile Daten erlauben für iCloud Drive
 
 ### "App fragt nicht nach Kalender/Kontakte-Berechtigung"
 → Prüfe, ob die Info.plist Einträge korrekt gesetzt sind

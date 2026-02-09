@@ -10,20 +10,20 @@ import SwiftData
 
 @Model
 final class Keynote {
-    var eventName: String
-    var eventDate: Date
-    var keynoteTitle: String
-    var keynoteTheme: String
-    var duration: Double // in Minuten (CloudKit-kompatibel)
-    var clientOrganization: String
+    var eventName: String = ""
+    var eventDate: Date = Date()
+    var keynoteTitle: String = ""
+    var keynoteTheme: String = ""
+    var duration: Double = 60 // in Minuten (CloudKit-kompatibel)
+    var clientOrganization: String = ""
     var primaryContactID: String? // CNContact Identifier
-    var agreedFeeInCents: Int64 // Honorar in Cents/Rappen gespeichert
-    var targetAudience: String
-    var location: String
-    var statusRaw: String
-    var requestDate: Date
+    var agreedFeeInCents: Int64 = 0 // Honorar in Cents/Rappen gespeichert
+    var targetAudience: String = ""
+    var location: String = ""
+    var statusRaw: String = KeynoteStatus.requested.rawValue
+    var requestDate: Date = Date()
     var calendarEventID: String? // EventKit Event Identifier
-    var notes: String
+    var notes: String = ""
     
     // Computed property für Status
     var status: KeynoteStatus {
