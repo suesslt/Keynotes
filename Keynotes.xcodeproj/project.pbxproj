@@ -400,6 +400,8 @@
 				DEVELOPMENT_TEAM = D7X6ZT8YZW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "Diese App prüft die Verfügbarkeit von Terminen und trägt neue Termine ein";
+				INFOPLIST_KEY_NSContactsUsageDescription = "Diese App benötigt Zugriff auf Ihre Kontakte, um Keynote-Anfragen mit den zuständigen Ansprechpersonen zu verknüpfen.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -432,6 +434,8 @@
 				DEVELOPMENT_TEAM = D7X6ZT8YZW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "Diese App prüft die Verfügbarkeit von Terminen und trägt neue Termine ein";
+				INFOPLIST_KEY_NSContactsUsageDescription = "Diese App benötigt Zugriff auf Ihre Kontakte, um Keynote-Anfragen mit den zuständigen Ansprechpersonen zu verknüpfen.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
