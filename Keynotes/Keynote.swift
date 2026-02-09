@@ -16,7 +16,14 @@ final class Keynote {
     var keynoteTheme: String = ""
     var duration: Double = 60 // in Minuten (CloudKit-kompatibel)
     var clientOrganization: String = ""
-    var primaryContactID: String? // CNContact Identifier
+    
+    // DEPRECATED: Alte Kontakt-ID (gerätespezifisch, wird nicht mehr verwendet)
+    // Wird behalten für Migration, aber nicht mehr genutzt
+    var primaryContactID: String?
+    
+    // NEU: iCloud-synchronisierbare Kontaktdaten
+    var primaryContact: KeynoteContact?
+    
     var agreedFeeInCents: Int64 = 0 // Honorar in Cents/Rappen gespeichert
     var targetAudience: String = ""
     var location: String = ""
@@ -55,7 +62,7 @@ final class Keynote {
         keynoteTheme: String = "",
         duration: Double = 60,
         clientOrganization: String = "",
-        primaryContactID: String? = nil,
+        primaryContact: KeynoteContact? = nil,
         agreedFee: Decimal = 0,
         targetAudience: String = "",
         location: String = "",
@@ -70,7 +77,7 @@ final class Keynote {
         self.keynoteTheme = keynoteTheme
         self.duration = duration
         self.clientOrganization = clientOrganization
-        self.primaryContactID = primaryContactID
+        self.primaryContact = primaryContact
         
         var result = agreedFee * Decimal(100)
         var rounded = Decimal()

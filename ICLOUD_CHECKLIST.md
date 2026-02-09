@@ -8,6 +8,8 @@ Nutze diese Checkliste um sicherzustellen, dass alles korrekt konfiguriert ist.
 - [x] `CloudKitStatusView.swift` erstellt für Status-Monitoring
 - [x] UI Button in `ContentView.swift` zum Prüfen des Status
 - [x] SwiftData Models sind CloudKit-kompatibel
+- [x] **NEU:** `KeynoteContact` Model für iCloud-Sync der Kontaktdaten
+- [x] **NEU:** Automatische Migration von alten Kontakt-IDs
 
 ## Xcode Konfiguration (👈 Das musst du noch machen!)
 
@@ -33,10 +35,12 @@ Nutze diese Checkliste um sicherzustellen, dass alles korrekt konfiguriert ist.
 - [ ] **iCloud Drive aktiviert** in iOS Einstellungen
 - [ ] **Internet-Verbindung** vorhanden
 - [ ] iCloud Status in der App prüfen (sollte grün sein ✅)
-- [ ] Keynote erstellen auf Gerät 1
+- [ ] Keynote erstellen auf Gerät 1 **mit Kontakt**
+- [ ] **Kontaktdaten vollständig angezeigt** (Name, E-Mail, Telefon)
 - [ ] Zweites Gerät mit **gleicher Apple ID** verbinden
 - [ ] App auf Gerät 2 öffnen
 - [ ] Nach 5-30 Sekunden sollte Keynote erscheinen
+- [ ] **Kontaktdaten auf Gerät 2 sichtbar** (ohne Kontaktzugriff!)
 
 ## Verifikation
 

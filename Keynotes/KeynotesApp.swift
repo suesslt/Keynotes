@@ -13,6 +13,7 @@ struct KeynotesApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Keynote.self,
+            KeynoteContact.self, // Neues Model für iCloud-Sync
         ])
         
         // ModelConfiguration für iCloud-Sync aktivieren
@@ -28,12 +29,28 @@ struct KeynotesApp: App {
             fatalError("Could not create ModelContainer: \(error)")
         }
     }()
+    
+    @StateObject private var contactsService = ContactsService()
+    @State private var hasMigrated = false
 
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .task {
+                    // Einmalige Migration alter Kontakt-IDs zu neuen KeynoteContact-Objekten
+                    if !hasMigrated {
+                        await migrateContacts()
+                        hasMigrated = true
+                    }
+                }
         }
         .modelContainer(sharedModelContainer)
+    }
+    
+    @MainActor
+    private func migrateContacts() async {
+        let migrationHelper = ContactMigrationHelper(contactsService: contactsService)
+        await migrationHelper.migrateKeynotes(context: sharedModelContainer.mainContext)
     }
 }
 // MARK: - CloudKit Sync Status (Optional)

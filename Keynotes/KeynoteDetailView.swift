@@ -59,7 +59,12 @@ struct KeynoteDetailView: View {
         .sheet(isPresented: $showingContactPicker) {
             ContactPickerView(
                 contactsService: contactsService,
-                selectedContactID: $keynote.primaryContactID
+                onContactSelected: { keynoteContact in
+                    // Setze den neuen KeynoteContact
+                    keynote.primaryContact = keynoteContact
+                    // Lösche alte ID falls vorhanden
+                    keynote.primaryContactID = nil
+                }
             )
         }
         .alert("Save the Date erstellt", isPresented: $showingSaveCalendarAlert) {
@@ -115,18 +120,19 @@ struct KeynoteDetailView: View {
     
     private var contactSection: some View {
         Section("Kontakt") {
-            if let contactID = keynote.primaryContactID {
+            if let contact = keynote.primaryContact {
+                // Neues System: Zeige KeynoteContact-Daten
                 HStack {
                     VStack(alignment: .leading) {
-                        Text(contactsService.getContactName(identifier: contactID))
+                        Text(contact.displayName)
                             .font(.headline)
-                        if let email = contactsService.getContactEmail(identifier: contactID) {
-                            Text(email)
+                        if !contact.email.isEmpty {
+                            Text(contact.email)
                                 .font(.caption)
                                 .foregroundStyle(.secondary)
                         }
-                        if let phone = contactsService.getContactPhone(identifier: contactID) {
-                            Text(phone)
+                        if !contact.phone.isEmpty {
+                            Text(contact.phone)
                                 .font(.caption)
                                 .foregroundStyle(.secondary)
                         }
@@ -136,6 +142,34 @@ struct KeynoteDetailView: View {
                     
                     Button("Ändern") {
                         showingContactPicker = true
+                    }
+                }
+            } else if let oldContactID = keynote.primaryContactID {
+                // Fallback für alte Kontakt-IDs (sollte nur während Migration vorkommen)
+                HStack {
+                    VStack(alignment: .leading) {
+                        Text(contactsService.getContactName(identifier: oldContactID))
+                            .font(.headline)
+                        if let email = contactsService.getContactEmail(identifier: oldContactID) {
+                            Text(email)
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                        }
+                        if let phone = contactsService.getContactPhone(identifier: oldContactID) {
+                            Text(phone)
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                        }
+                    }
+                    
+                    Spacer()
+                    
+                    Button("Migrieren") {
+                        // Migriere diesen Kontakt sofort
+                        if let keynoteContact = contactsService.createKeynoteContact(from: oldContactID) {
+                            keynote.primaryContact = keynoteContact
+                            keynote.primaryContactID = nil
+                        }
                     }
                 }
             } else {
@@ -370,15 +404,18 @@ struct ContactDisplayView: View {
     }
     
     private func loadContactData(contactID: String) async {
-        // Lade Kontaktdaten auf dem Haupt-Thread
-        let name = contactsService.getContactName(identifier: contactID)
-        let email = contactsService.getContactEmail(identifier: contactID)
-        let phone = contactsService.getContactPhone(identifier: contactID)
+        // Capture the service to avoid dynamic member lookup issues in async context
+        let service = contactsService
+        
+        // Load contact data - these methods are synchronous but marked @MainActor
+        let loadedName = service.getContactName(identifier: contactID)
+        let loadedEmail = service.getContactEmail(identifier: contactID)
+        let loadedPhone = service.getContactPhone(identifier: contactID)
         
         // Update UI
-        self.contactName = name
-        self.contactEmail = email
-        self.contactPhone = phone
+        self.contactName = loadedName
+        self.contactEmail = loadedEmail
+        self.contactPhone = loadedPhone
     }
 }
 

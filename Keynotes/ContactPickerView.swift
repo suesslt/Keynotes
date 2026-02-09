@@ -7,15 +7,96 @@
 
 import SwiftUI
 import Contacts
+import Combine
 
+// MARK: - ViewModel
+@MainActor
+class ContactPickerViewModel: ObservableObject {
+    @Published var contacts: [CNContact] = []
+    @Published var searchText: String = ""
+    @Published var isLoading: Bool = false
+    @Published var errorMessage: String?
+    
+    private let contactsService: ContactsService
+    
+    init(contactsService: ContactsService) {
+        self.contactsService = contactsService
+    }
+    
+    var filteredContacts: [CNContact] {
+        if searchText.isEmpty {
+            return contacts
+        }
+        
+        return contacts.filter { contact in
+            let fullName = CNContactFormatter.string(from: contact, style: .fullName) ?? ""
+            let organization = contact.organizationName
+            let email = contact.emailAddresses.first?.value as String? ?? ""
+            
+            let searchLower = searchText.lowercased()
+            
+            return fullName.lowercased().contains(searchLower) ||
+                   organization.lowercased().contains(searchLower) ||
+                   email.lowercased().contains(searchLower)
+        }
+    }
+    
+    func loadContacts() async {
+        isLoading = true
+        errorMessage = nil
+        
+        // Request access first
+        let hasAccess = await contactsService.requestAccess()
+        
+        guard hasAccess else {
+            errorMessage = "Zugriff auf Kontakte wurde verweigert. Bitte aktivieren Sie den Zugriff in den Systemeinstellungen."
+            isLoading = false
+            return
+        }
+        
+        // Fetch all contacts
+        let keysToFetch: [CNKeyDescriptor] = [
+            CNContactGivenNameKey as CNKeyDescriptor,
+            CNContactFamilyNameKey as CNKeyDescriptor,
+            CNContactOrganizationNameKey as CNKeyDescriptor,
+            CNContactEmailAddressesKey as CNKeyDescriptor,
+            CNContactPhoneNumbersKey as CNKeyDescriptor,
+            CNContactImageDataKey as CNKeyDescriptor,
+            CNContactFormatter.descriptorForRequiredKeys(for: .fullName)
+        ]
+        
+        let fetchRequest = CNContactFetchRequest(keysToFetch: keysToFetch)
+        fetchRequest.sortOrder = .familyName
+        
+        do {
+            var fetchedContacts: [CNContact] = []
+            let contactStore = CNContactStore()
+            
+            try contactStore.enumerateContacts(with: fetchRequest) { contact, _ in
+                fetchedContacts.append(contact)
+            }
+            
+            contacts = fetchedContacts
+            isLoading = false
+        } catch {
+            errorMessage = "Fehler beim Laden der Kontakte: \(error.localizedDescription)"
+            isLoading = false
+        }
+    }
+}
+
+// MARK: - View
 /// Native SwiftUI Contact Picker für iOS und macOS
 struct ContactPickerView: View {
     @Environment(\.dismiss) private var dismiss
     @StateObject private var viewModel: ContactPickerViewModel
-    @Binding var selectedContactID: String?
     
-    init(contactsService: ContactsService, selectedContactID: Binding<String?>) {
-        self._selectedContactID = selectedContactID
+    let contactsService: ContactsService
+    let onContactSelected: (KeynoteContact) -> Void
+    
+    init(contactsService: ContactsService, onContactSelected: @escaping (KeynoteContact) -> Void) {
+        self.contactsService = contactsService
+        self.onContactSelected = onContactSelected
         self._viewModel = StateObject(wrappedValue: ContactPickerViewModel(contactsService: contactsService))
     }
     
@@ -74,8 +155,11 @@ struct ContactPickerView: View {
         List {
             ForEach(viewModel.filteredContacts, id: \.identifier) { contact in
                 ContactRowButton(contact: contact) {
-                    selectedContactID = contact.identifier
-                    dismiss()
+                    // Erstelle KeynoteContact aus CNContact
+                    if let keynoteContact = contactsService.createKeynoteContact(from: contact.identifier) {
+                        onContactSelected(keynoteContact)
+                        dismiss()
+                    }
                 }
             }
         }
@@ -181,7 +265,9 @@ extension Image {
 #Preview("Contact Picker") {
     ContactPickerView(
         contactsService: ContactsService(),
-        selectedContactID: .constant(nil)
+        onContactSelected: { contact in
+            print("Kontakt ausgewählt: \(contact.displayName)")
+        }
     )
 }
 #Preview("Contact Row") {
