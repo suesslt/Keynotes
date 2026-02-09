@@ -358,18 +358,19 @@ struct ContactPickerPresenter: UIViewControllerRepresentable {
     }
     
     func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
+        // Verwende Task, um State-Änderungen außerhalb des View-Updates durchzuführen
         if isPresented && coordinator == nil {
-            let newCoordinator = ContactPickerCoordinator(
-                selectedContactID: $selectedContactID,
-                onDismiss: {
-                    isPresented = false
-                    coordinator = nil
-                }
-            )
-            coordinator = newCoordinator
-            
-            // Warte kurz, bis der View Controller in der Hierarchie ist
-            DispatchQueue.main.async {
+            Task { @MainActor in
+                let newCoordinator = ContactPickerCoordinator(
+                    selectedContactID: $selectedContactID,
+                    onDismiss: {
+                        isPresented = false
+                        coordinator = nil
+                    }
+                )
+                coordinator = newCoordinator
+                
+                // Warte kurz, bis der View Controller in der Hierarchie ist
                 if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
                    let rootVC = windowScene.windows.first?.rootViewController {
                     var topVC = rootVC

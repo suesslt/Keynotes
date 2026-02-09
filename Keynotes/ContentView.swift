@@ -196,15 +196,23 @@ struct ContentView: View {
 // MARK: - Keynote Row View
 struct KeynoteRowView: View {
     let keynote: Keynote
-    var contactsService: ContactsService
+    @ObservedObject var contactsService: ContactsService
+    
+    @State private var contactName: String?
     
     var body: some View {
         KeynoteListItemView(
             keynote: keynote,
-            contactName: keynote.primaryContactID.map { 
-                contactsService.getContactName(identifier: $0) 
-            }
+            contactName: contactName
         )
+        .task(id: keynote.primaryContactID) {
+            // Lade Kontaktdaten asynchron und nur bei Änderungen
+            if let contactID = keynote.primaryContactID {
+                contactName = contactsService.getContactName(identifier: contactID)
+            } else {
+                contactName = nil
+            }
+        }
     }
 }
 
