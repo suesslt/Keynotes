@@ -12,6 +12,9 @@
 		B57AA9AA2F39E02500582866 /* CLOUDKIT_DASHBOARD_FAQ.md in Resources */ = {isa = PBXBuildFile; fileRef = B57AA9A92F39E02500582866 /* CLOUDKIT_DASHBOARD_FAQ.md */; };
 		B58A096A2F38C8B900CF976B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = B58A09692F38C8B900CF976B /* README.md */; };
 		B58A09762F38C99F00CF976B /* QUICKSTART.md in Resources */ = {isa = PBXBuildFile; fileRef = B58A09752F38C99F00CF976B /* QUICKSTART.md */; };
+		B5D07BFE2F3A1BF5007CB2FF /* ContactPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D07BFD2F3A1BF5007CB2FF /* ContactPickerView.swift */; };
+		B5D07C002F3A1C38007CB2FF /* ContactPickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D07BFF2F3A1C38007CB2FF /* ContactPickerViewModel.swift */; };
+		B5D07C022F3A1C69007CB2FF /* ContactPicker-README.md in Resources */ = {isa = PBXBuildFile; fileRef = B5D07C012F3A1C69007CB2FF /* ContactPicker-README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +43,9 @@
 		B58A094C2F38C7AE00CF976B /* KeynotesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeynotesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B58A09692F38C8B900CF976B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		B58A09752F38C99F00CF976B /* QUICKSTART.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = QUICKSTART.md; sourceTree = "<group>"; };
+		B5D07BFD2F3A1BF5007CB2FF /* ContactPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactPickerView.swift; sourceTree = "<group>"; };
+		B5D07BFF2F3A1C38007CB2FF /* ContactPickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactPickerViewModel.swift; sourceTree = "<group>"; };
+		B5D07C012F3A1C69007CB2FF /* ContactPicker-README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "ContactPicker-README.md"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -110,6 +116,9 @@
 				B57AA9A52F39DDB300582866 /* ICLOUD_CHECKLIST.md */,
 				B57AA9A32F39DD9F00582866 /* ICLOUD_SETUP.md */,
 				B57AA9A92F39E02500582866 /* CLOUDKIT_DASHBOARD_FAQ.md */,
+				B5D07BFD2F3A1BF5007CB2FF /* ContactPickerView.swift */,
+				B5D07BFF2F3A1C38007CB2FF /* ContactPickerViewModel.swift */,
+				B5D07C012F3A1C69007CB2FF /* ContactPicker-README.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -248,6 +257,7 @@
 				B57AA9AA2F39E02500582866 /* CLOUDKIT_DASHBOARD_FAQ.md in Resources */,
 				B57AA9A42F39DD9F00582866 /* ICLOUD_SETUP.md in Resources */,
 				B58A09762F38C99F00CF976B /* QUICKSTART.md in Resources */,
+				B5D07C022F3A1C69007CB2FF /* ContactPicker-README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +282,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5D07BFE2F3A1BF5007CB2FF /* ContactPickerView.swift in Sources */,
+				B5D07C002F3A1C38007CB2FF /* ContactPickerViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

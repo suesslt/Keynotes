@@ -7,7 +7,6 @@
 
 import SwiftUI
 import SwiftData
-import ContactsUI
 import EventKit
 
 struct KeynoteDetailView: View {
@@ -23,7 +22,6 @@ struct KeynoteDetailView: View {
     @State private var showingSaveCalendarAlert = false
     @State private var availabilityEvents: [String] = []
     @State private var isCheckingAvailability = false
-    @State private var contactPickerCoordinator: ContactPickerCoordinator?
     
     var isNewKeynote: Bool
     
@@ -58,9 +56,12 @@ struct KeynoteDetailView: View {
         .sheet(isPresented: $showingStatusChange) {
             StatusChangeView(keynote: keynote, calendarService: calendarService)
         }
-        .background(ContactPickerPresenter(isPresented: $showingContactPicker, 
-                                           selectedContactID: $keynote.primaryContactID,
-                                           coordinator: $contactPickerCoordinator))
+        .sheet(isPresented: $showingContactPicker) {
+            ContactPickerView(
+                contactsService: contactsService,
+                selectedContactID: $keynote.primaryContactID
+            )
+        }
         .alert("Save the Date erstellt", isPresented: $showingSaveCalendarAlert) {
             Button("OK", role: .cancel) { }
         } message: {
@@ -321,72 +322,71 @@ struct StatusChangeView: View {
     }
 }
 
-// MARK: - Contact Picker Coordinator
-class ContactPickerCoordinator: NSObject, CNContactPickerDelegate {
-    var selectedContactID: Binding<String?>
-    var onDismiss: () -> Void
+// MARK: - Contact Display View
+struct ContactDisplayView: View {
+    let contactID: String?
+    @ObservedObject var contactsService: ContactsService
+    let onChangeContact: () -> Void
     
-    init(selectedContactID: Binding<String?>, onDismiss: @escaping () -> Void) {
-        self.selectedContactID = selectedContactID
-        self.onDismiss = onDismiss
-    }
+    @State private var contactName: String = "Lädt..."
+    @State private var contactEmail: String?
+    @State private var contactPhone: String?
     
-    func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
-        selectedContactID.wrappedValue = contact.identifier
-        onDismiss()
-    }
-    
-    func contactPickerDidCancel(_ picker: CNContactPickerViewController) {
-        onDismiss()
-    }
-    
-    func presentPicker(from viewController: UIViewController) {
-        let picker = CNContactPickerViewController()
-        picker.delegate = self
-        viewController.present(picker, animated: true)
-    }
-}
-
-// MARK: - Contact Picker Presenter
-struct ContactPickerPresenter: UIViewControllerRepresentable {
-    @Binding var isPresented: Bool
-    @Binding var selectedContactID: String?
-    @Binding var coordinator: ContactPickerCoordinator?
-    
-    func makeUIViewController(context: Context) -> UIViewController {
-        UIViewController()
-    }
-    
-    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
-        // Verwende Task, um State-Änderungen außerhalb des View-Updates durchzuführen
-        if isPresented && coordinator == nil {
-            Task { @MainActor in
-                let newCoordinator = ContactPickerCoordinator(
-                    selectedContactID: $selectedContactID,
-                    onDismiss: {
-                        isPresented = false
-                        coordinator = nil
+    var body: some View {
+        if let contactID = contactID {
+            HStack {
+                VStack(alignment: .leading) {
+                    Text(contactName)
+                        .font(.headline)
+                        .redacted(reason: contactName == "Lädt..." ? .placeholder : [])
+                    
+                    if let email = contactEmail {
+                        Text(email)
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
                     }
-                )
-                coordinator = newCoordinator
-                
-                // Warte kurz, bis der View Controller in der Hierarchie ist
-                if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-                   let rootVC = windowScene.windows.first?.rootViewController {
-                    var topVC = rootVC
-                    while let presented = topVC.presentedViewController {
-                        topVC = presented
+                    if let phone = contactPhone {
+                        Text(phone)
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
                     }
-                    newCoordinator.presentPicker(from: topVC)
                 }
+                
+                Spacer()
+                
+                Button("Ändern") {
+                    onChangeContact()
+                }
+            }
+            .task(id: contactID) {
+                // Lade Kontaktdaten asynchron
+                await loadContactData(contactID: contactID)
+            }
+        } else {
+            Button(action: onChangeContact) {
+                Label("Primären Kontakt wählen", systemImage: "person.crop.circle.badge.plus")
             }
         }
     }
+    
+    private func loadContactData(contactID: String) async {
+        // Lade Kontaktdaten auf dem Haupt-Thread
+        let name = contactsService.getContactName(identifier: contactID)
+        let email = contactsService.getContactEmail(identifier: contactID)
+        let phone = contactsService.getContactPhone(identifier: contactID)
+        
+        // Update UI
+        self.contactName = name
+        self.contactEmail = email
+        self.contactPhone = phone
+    }
 }
 
+// MARK: - Preview
 #Preview {
     NavigationStack {
         KeynoteDetailView(keynote: Keynote(), isNewKeynote: true)
     }
     .modelContainer(for: Keynote.self, inMemory: true)
 }
+
