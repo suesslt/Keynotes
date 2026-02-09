@@ -14,7 +14,13 @@ struct KeynotesApp: App {
         let schema = Schema([
             Keynote.self,
         ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+        
+        // ModelConfiguration für iCloud-Sync aktivieren
+        let modelConfiguration = ModelConfiguration(
+            schema: schema,
+            isStoredInMemoryOnly: false,
+            cloudKitDatabase: .automatic // Aktiviert iCloud-Synchronisation
+        )
 
         do {
             return try ModelContainer(for: schema, configurations: [modelConfiguration])

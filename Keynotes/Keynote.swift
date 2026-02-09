@@ -14,10 +14,10 @@ final class Keynote {
     var eventDate: Date
     var keynoteTitle: String
     var keynoteTheme: String
-    var duration: TimeInterval // in Minuten
+    var duration: Double // in Minuten (CloudKit-kompatibel)
     var clientOrganization: String
     var primaryContactID: String? // CNContact Identifier
-    var agreedFee: Decimal
+    var agreedFeeInCents: Int64 // Honorar in Cents/Rappen gespeichert
     var targetAudience: String
     var location: String
     var statusRaw: String
@@ -35,12 +35,25 @@ final class Keynote {
         }
     }
     
+    // Computed property für Honorar mit Decimal-Kompatibilität
+    var agreedFee: Decimal {
+        get {
+            Decimal(agreedFeeInCents) / Decimal(100)
+        }
+        set {
+            var result = newValue * Decimal(100)
+            var rounded = Decimal()
+            NSDecimalRound(&rounded, &result, 0, .plain)
+            agreedFeeInCents = Int64(truncating: rounded as NSDecimalNumber)
+        }
+    }
+    
     init(
         eventName: String = "",
         eventDate: Date = Date(),
         keynoteTitle: String = "",
         keynoteTheme: String = "",
-        duration: TimeInterval = 60,
+        duration: Double = 60,
         clientOrganization: String = "",
         primaryContactID: String? = nil,
         agreedFee: Decimal = 0,
@@ -58,7 +71,12 @@ final class Keynote {
         self.duration = duration
         self.clientOrganization = clientOrganization
         self.primaryContactID = primaryContactID
-        self.agreedFee = agreedFee
+        
+        var result = agreedFee * Decimal(100)
+        var rounded = Decimal()
+        NSDecimalRound(&rounded, &result, 0, .plain)
+        self.agreedFeeInCents = Int64(truncating: rounded as NSDecimalNumber)
+        
         self.targetAudience = targetAudience
         self.location = location
         self.statusRaw = status.rawValue

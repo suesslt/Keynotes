@@ -36,9 +36,22 @@
 		B58A09752F38C99F00CF976B /* QUICKSTART.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = QUICKSTART.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		B57AA9992F39D5E100582866 /* Exceptions for "Keynotes" folder in "Keynotes" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = B58A09322F38C7AD00CF976B /* Keynotes */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		B58A09352F38C7AD00CF976B /* Keynotes */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				B57AA9992F39D5E100582866 /* Exceptions for "Keynotes" folder in "Keynotes" target */,
+			);
 			path = Keynotes;
 			sourceTree = "<group>";
 		};
