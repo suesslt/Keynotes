@@ -1,6 +1,6 @@
 //
 //  SampleData.swift
-//  Keynotes
+//  Auftritte
 //
 //  Created by Thomas Süssli on 08.02.2026.
 //

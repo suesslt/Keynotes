@@ -1,6 +1,6 @@
 //
-//  Keynote.swift
-//  Keynotes
+//  Auftritte.swift
+//  Auftritte
 //
 //  Created by Thomas Süssli on 08.02.2026.
 //
@@ -17,7 +17,7 @@ final class Keynote {
     var duration: Double = 60 // in Minuten (CloudKit-kompatibel)
     var clientOrganization: String = ""
     var primaryContact: KeynoteContact?
-    var agreedFeeInCents: Int64 = 0 // Honorar in Cents/Rappen gespeichert
+    var agreedFeeInCents: Int64 = 0 // Honorar in Cents/Rappen gespeichert (Decimal geht nicht in CloudKit)
     var targetAudience: String = ""
     var location: String = ""
     var statusRaw: String = KeynoteStatus.requested.rawValue

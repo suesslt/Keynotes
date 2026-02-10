@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  Keynotes
+//  Auftritte
 //
 //  Created by Thomas Süssli on 08.02.2026.
 //
@@ -17,6 +17,7 @@ struct ContentView: View {
     @State private var selectedKeynote: Keynote?
     @State private var statusFilter: KeynoteStatus?
     @State private var showingStats = false
+    @State private var showingPDFExport = false
     @StateObject private var calendarService = CalendarService()
     @StateObject private var errorHandler = ErrorHandler()
 
@@ -56,11 +57,26 @@ struct ContentView: View {
                             Label("Löschen", systemImage: "trash")
                         }
                     }
-                    .swipeActions(edge: .leading, allowsFullSwipe: true) {
-                        Button {
-                            selectedKeynote = keynote
+                    .swipeActions(edge: .leading, allowsFullSwipe: false) {
+                        Menu {
+                            ForEach(KeynoteStatus.allCases) { status in
+                                Button {
+                                    updateStatus(for: keynote, to: status)
+                                } label: {
+                                    HStack {
+                                        Circle()
+                                            .fill(status.color)
+                                            .frame(width: 12, height: 12)
+                                        Text(status.rawValue)
+                                        if keynote.status == status {
+                                            Spacer()
+                                            Image(systemName: "checkmark")
+                                        }
+                                    }
+                                }
+                            }
                         } label: {
-                            Label("Bearbeiten", systemImage: "pencil")
+                            Label("Status", systemImage: "circle.fill")
                         }
                         .tint(.blue)
                     }
@@ -79,7 +95,7 @@ struct ContentView: View {
                     }
                 }
             }
-            .navigationTitle("Keynotes")
+            .navigationTitle("Auftritte")
             .searchable(text: $searchText, prompt: "Suchen...")
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -110,14 +126,22 @@ struct ContentView: View {
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: { showingStats = true }) {
-                        Label("Statistiken", systemImage: "chart.bar.fill")
+                    Menu {
+                        Button(action: { showingStats = true }) {
+                            Label("Statistiken", systemImage: "chart.bar.fill")
+                        }
+                        
+                        Button(action: { showingPDFExport = true }) {
+                            Label("PDF exportieren", systemImage: "doc.fill")
+                        }
+                    } label: {
+                        Label("Mehr", systemImage: "ellipsis.circle")
                     }
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: { showingNewKeynote = true }) {
-                        Label("Neue Keynote", systemImage: "plus")
+                        Label("Neuer Auftritt", systemImage: "plus")
                     }
                 }
             }
@@ -146,11 +170,14 @@ struct ContentView: View {
                         }
                 }
             }
+            .sheet(isPresented: $showingPDFExport) {
+                PDFExportView(keynotes: keynotes)
+            }
         } detail: {
             ContentUnavailableView(
-                "Wähle eine Keynote",
+                "Wähle einen Auftritt",
                 systemImage: "mic.fill",
-                description: Text("Wähle eine Keynote aus der Liste oder erstelle eine neue.")
+                description: Text("Wähle einen Auftritt aus der Liste oder erstelle einen neuen.")
             )
         }
         .task {
@@ -159,6 +186,12 @@ struct ContentView: View {
         .errorAlert(errorHandler: errorHandler)
     }
 
+    private func updateStatus(for keynote: Keynote, to status: KeynoteStatus) {
+        withAnimation {
+            keynote.status = status
+        }
+    }
+    
     private func deleteKeynote(_ keynote: Keynote) {
         withAnimation {
             // Kalender-Event löschen, falls vorhanden

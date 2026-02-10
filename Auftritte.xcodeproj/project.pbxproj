@@ -41,9 +41,9 @@
 		B57AA9A32F39DD9F00582866 /* ICLOUD_SETUP.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ICLOUD_SETUP.md; sourceTree = "<group>"; };
 		B57AA9A52F39DDB300582866 /* ICLOUD_CHECKLIST.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ICLOUD_CHECKLIST.md; sourceTree = "<group>"; };
 		B57AA9A92F39E02500582866 /* CLOUDKIT_DASHBOARD_FAQ.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CLOUDKIT_DASHBOARD_FAQ.md; sourceTree = "<group>"; };
-		B58A09332F38C7AD00CF976B /* Keynotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Keynotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		B58A09422F38C7AE00CF976B /* KeynotesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeynotesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B58A094C2F38C7AE00CF976B /* KeynotesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeynotesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B58A09332F38C7AD00CF976B /* Auftritte.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Auftritte.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B58A09422F38C7AE00CF976B /* AuftritteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AuftritteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B58A094C2F38C7AE00CF976B /* AuftritteUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AuftritteUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B58A09692F38C8B900CF976B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		B58A09752F38C99F00CF976B /* QUICKSTART.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = QUICKSTART.md; sourceTree = "<group>"; };
 		B5D07C092F3A2022007CB2FF /* CONTACT_SYNC_SOLUTION.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CONTACT_SYNC_SOLUTION.md; sourceTree = "<group>"; };
@@ -55,22 +55,22 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		B57AA9992F39D5E100582866 /* Exceptions for "Keynotes" folder in "Keynotes" target */ = {
+		B57AA9992F39D5E100582866 /* Exceptions for "Auftritte" folder in "Auftritte" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
 			);
-			target = B58A09322F38C7AD00CF976B /* Keynotes */;
+			target = B58A09322F38C7AD00CF976B /* Auftritte */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		B58A09352F38C7AD00CF976B /* Keynotes */ = {
+		B58A09352F38C7AD00CF976B /* Auftritte */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				B57AA9992F39D5E100582866 /* Exceptions for "Keynotes" folder in "Keynotes" target */,
+				B57AA9992F39D5E100582866 /* Exceptions for "Auftritte" folder in "Auftritte" target */,
 			);
-			path = Keynotes;
+			path = Auftritte;
 			sourceTree = "<group>";
 		};
 		B58A09452F38C7AE00CF976B /* KeynotesTests */ = {
@@ -113,7 +113,7 @@
 		B58A092A2F38C7AD00CF976B = {
 			isa = PBXGroup;
 			children = (
-				B58A09352F38C7AD00CF976B /* Keynotes */,
+				B58A09352F38C7AD00CF976B /* Auftritte */,
 				B58A09452F38C7AE00CF976B /* KeynotesTests */,
 				B58A094F2F38C7AE00CF976B /* KeynotesUITests */,
 				B58A09342F38C7AD00CF976B /* Products */,
@@ -134,9 +134,9 @@
 		B58A09342F38C7AD00CF976B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B58A09332F38C7AD00CF976B /* Keynotes.app */,
-				B58A09422F38C7AE00CF976B /* KeynotesTests.xctest */,
-				B58A094C2F38C7AE00CF976B /* KeynotesUITests.xctest */,
+				B58A09332F38C7AD00CF976B /* Auftritte.app */,
+				B58A09422F38C7AE00CF976B /* AuftritteTests.xctest */,
+				B58A094C2F38C7AE00CF976B /* AuftritteUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -144,9 +144,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B58A09322F38C7AD00CF976B /* Keynotes */ = {
+		B58A09322F38C7AD00CF976B /* Auftritte */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B58A09562F38C7AE00CF976B /* Build configuration list for PBXNativeTarget "Keynotes" */;
+			buildConfigurationList = B58A09562F38C7AE00CF976B /* Build configuration list for PBXNativeTarget "Auftritte" */;
 			buildPhases = (
 				B58A092F2F38C7AD00CF976B /* Sources */,
 				B58A09302F38C7AD00CF976B /* Frameworks */,
@@ -157,18 +157,18 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				B58A09352F38C7AD00CF976B /* Keynotes */,
+				B58A09352F38C7AD00CF976B /* Auftritte */,
 			);
-			name = Keynotes;
+			name = Auftritte;
 			packageProductDependencies = (
 			);
 			productName = Keynotes;
-			productReference = B58A09332F38C7AD00CF976B /* Keynotes.app */;
+			productReference = B58A09332F38C7AD00CF976B /* Auftritte.app */;
 			productType = "com.apple.product-type.application";
 		};
-		B58A09412F38C7AE00CF976B /* KeynotesTests */ = {
+		B58A09412F38C7AE00CF976B /* AuftritteTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B58A09592F38C7AE00CF976B /* Build configuration list for PBXNativeTarget "KeynotesTests" */;
+			buildConfigurationList = B58A09592F38C7AE00CF976B /* Build configuration list for PBXNativeTarget "AuftritteTests" */;
 			buildPhases = (
 				B58A093E2F38C7AE00CF976B /* Sources */,
 				B58A093F2F38C7AE00CF976B /* Frameworks */,
@@ -182,16 +182,16 @@
 			fileSystemSynchronizedGroups = (
 				B58A09452F38C7AE00CF976B /* KeynotesTests */,
 			);
-			name = KeynotesTests;
+			name = AuftritteTests;
 			packageProductDependencies = (
 			);
 			productName = KeynotesTests;
-			productReference = B58A09422F38C7AE00CF976B /* KeynotesTests.xctest */;
+			productReference = B58A09422F38C7AE00CF976B /* AuftritteTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		B58A094B2F38C7AE00CF976B /* KeynotesUITests */ = {
+		B58A094B2F38C7AE00CF976B /* AuftritteUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B58A095C2F38C7AE00CF976B /* Build configuration list for PBXNativeTarget "KeynotesUITests" */;
+			buildConfigurationList = B58A095C2F38C7AE00CF976B /* Build configuration list for PBXNativeTarget "AuftritteUITests" */;
 			buildPhases = (
 				B58A09482F38C7AE00CF976B /* Sources */,
 				B58A09492F38C7AE00CF976B /* Frameworks */,
@@ -205,11 +205,11 @@
 			fileSystemSynchronizedGroups = (
 				B58A094F2F38C7AE00CF976B /* KeynotesUITests */,
 			);
-			name = KeynotesUITests;
+			name = AuftritteUITests;
 			packageProductDependencies = (
 			);
 			productName = KeynotesUITests;
-			productReference = B58A094C2F38C7AE00CF976B /* KeynotesUITests.xctest */;
+			productReference = B58A094C2F38C7AE00CF976B /* AuftritteUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -235,7 +235,7 @@
 					};
 				};
 			};
-			buildConfigurationList = B58A092E2F38C7AD00CF976B /* Build configuration list for PBXProject "Keynotes" */;
+			buildConfigurationList = B58A092E2F38C7AD00CF976B /* Build configuration list for PBXProject "Auftritte" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -249,9 +249,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B58A09322F38C7AD00CF976B /* Keynotes */,
-				B58A09412F38C7AE00CF976B /* KeynotesTests */,
-				B58A094B2F38C7AE00CF976B /* KeynotesUITests */,
+				B58A09322F38C7AD00CF976B /* Auftritte */,
+				B58A09412F38C7AE00CF976B /* AuftritteTests */,
+				B58A094B2F38C7AE00CF976B /* AuftritteUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -318,12 +318,12 @@
 /* Begin PBXTargetDependency section */
 		B58A09442F38C7AE00CF976B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B58A09322F38C7AD00CF976B /* Keynotes */;
+			target = B58A09322F38C7AD00CF976B /* Auftritte */;
 			targetProxy = B58A09432F38C7AE00CF976B /* PBXContainerItemProxy */;
 		};
 		B58A094E2F38C7AE00CF976B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B58A09322F38C7AD00CF976B /* Keynotes */;
+			target = B58A09322F38C7AD00CF976B /* Auftritte */;
 			targetProxy = B58A094D2F38C7AE00CF976B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -455,15 +455,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Keynotes/Keynotes.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Auftritte/Auftritte.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = D7X6ZT8YZW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Keynotes/Info.plist;
+				INFOPLIST_FILE = Auftritte/Info.plist;
 				INFOPLIST_KEY_NSCalendarsUsageDescription = "Diese App prüft die Verfügbarkeit von Terminen und trägt neue Termine ein";
-				INFOPLIST_KEY_NSContactsUsageDescription = "Diese App benötigt Zugriff auf Ihre Kontakte, um Keynote-Anfragen mit den zuständigen Ansprechpersonen zu verknüpfen.";
+				INFOPLIST_KEY_NSContactsUsageDescription = "Diese App benötigt Zugriff auf Ihre Kontakte, um Anfragen für Auftritte mit den zuständigen Ansprechpersonen zu verknüpfen.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -474,7 +474,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = suessli.Keynotes;
+				PRODUCT_BUNDLE_IDENTIFIER = suessli.Auftritte;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -491,15 +491,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Keynotes/Keynotes.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Auftritte/Auftritte.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = D7X6ZT8YZW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Keynotes/Info.plist;
+				INFOPLIST_FILE = Auftritte/Info.plist;
 				INFOPLIST_KEY_NSCalendarsUsageDescription = "Diese App prüft die Verfügbarkeit von Terminen und trägt neue Termine ein";
-				INFOPLIST_KEY_NSContactsUsageDescription = "Diese App benötigt Zugriff auf Ihre Kontakte, um Keynote-Anfragen mit den zuständigen Ansprechpersonen zu verknüpfen.";
+				INFOPLIST_KEY_NSContactsUsageDescription = "Diese App benötigt Zugriff auf Ihre Kontakte, um Anfragen für Auftritte mit den zuständigen Ansprechpersonen zu verknüpfen.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -510,7 +510,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = suessli.Keynotes;
+				PRODUCT_BUNDLE_IDENTIFIER = suessli.Auftritte;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -540,7 +540,7 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Keynotes.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Keynotes";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Auftritte.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Auftritte";
 			};
 			name = Debug;
 		};
@@ -562,7 +562,7 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Keynotes.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Keynotes";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Auftritte.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Auftritte";
 			};
 			name = Release;
 		};
@@ -609,7 +609,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B58A092E2F38C7AD00CF976B /* Build configuration list for PBXProject "Keynotes" */ = {
+		B58A092E2F38C7AD00CF976B /* Build configuration list for PBXProject "Auftritte" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B58A09542F38C7AE00CF976B /* Debug */,
@@ -618,7 +618,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B58A09562F38C7AE00CF976B /* Build configuration list for PBXNativeTarget "Keynotes" */ = {
+		B58A09562F38C7AE00CF976B /* Build configuration list for PBXNativeTarget "Auftritte" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B58A09572F38C7AE00CF976B /* Debug */,
@@ -627,7 +627,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B58A09592F38C7AE00CF976B /* Build configuration list for PBXNativeTarget "KeynotesTests" */ = {
+		B58A09592F38C7AE00CF976B /* Build configuration list for PBXNativeTarget "AuftritteTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B58A095A2F38C7AE00CF976B /* Debug */,
@@ -636,7 +636,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B58A095C2F38C7AE00CF976B /* Build configuration list for PBXNativeTarget "KeynotesUITests" */ = {
+		B58A095C2F38C7AE00CF976B /* Build configuration list for PBXNativeTarget "AuftritteUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B58A095D2F38C7AE00CF976B /* Debug */,

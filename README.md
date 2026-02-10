@@ -1,10 +1,10 @@
-# Keynotes App - Setup und Konfiguration
+# Auftritte App - Setup und Konfiguration
 
 ## Übersicht
-Die Keynotes App ist eine umfassende iOS-Anwendung zur professionellen Verwaltung von Keynote-Auftritten als Speaker. Sie bietet vollständige CRUD-Funktionalität, Status-Management, Kalender- und Kontakt-Integration sowie Statistiken.
+Die Auftritte App ist eine umfassende iOS-Anwendung zur professionellen Verwaltung von Auftritten als Speaker. Sie bietet vollständige CRUD-Funktionalität, Status-Management, Kalender- und Kontakt-Integration sowie Statistiken.
 
 ## ✨ Features
-- ✅ **Vollständige CRUD-Funktionalität** für Keynotes mit swipe actions und context menus
+- ✅ **Vollständige CRUD-Funktionalität** für Auftritte mit swipe actions und context menus
 - ✅ **Status-Lifecycle** mit 9 Stufen + Abbruch-Option
 - ✅ **Apple Kalender Integration** (EventKit) für "Save the Date" Einträge
 - ✅ **Apple Kontakte Integration** zur Verknüpfung von Ansprechpartnern
@@ -76,13 +76,13 @@ Du **musst** folgende Privacy-Beschreibungen in deine `Info.plist` einfügen:
 
 ```
 Privacy - Calendars Usage Description
-→ Die App benötigt Zugriff auf deinen Kalender, um Save-the-Date Einträge für Keynotes zu erstellen und deine Verfügbarkeit zu prüfen.
+→ Die App benötigt Zugriff auf deinen Kalender, um Save-the-Date Einträge für Auftritte zu erstellen und deine Verfügbarkeit zu prüfen.
 
 Privacy - Calendars Full Access Usage Description  
-→ Die App benötigt vollen Kalenderzugriff, um Save-the-Date Einträge für deine Keynotes zu verwalten.
+→ Die App benötigt vollen Kalenderzugriff, um Save-the-Date Einträge für deine Auftritte zu verwalten.
 
 Privacy - Contacts Usage Description
-→ Die App benötigt Zugriff auf deine Kontakte, um primäre Ansprechpartner für Keynotes zu verknüpfen.
+→ Die App benötigt Zugriff auf deine Kontakte, um primäre Ansprechpartner für Auftritte zu verknüpfen.
 ```
 
 Alternativ kannst du die Werte aus `Info.plist.example` kopieren.
@@ -95,7 +95,7 @@ Keine besonderen Build Settings erforderlich. Die Standard-Einstellungen genüge
 
 ## 📱 Verwendung
 
-### Neue Keynote erstellen
+### Neuen Auftritt erstellen
 1. Tippe auf das **"+"** Icon in der Toolbar
 2. Fülle alle Felder aus:
    - Name des Anlasses (erforderlich)
@@ -105,14 +105,14 @@ Keine besonderen Build Settings erforderlich. Die Standard-Einstellungen genüge
 3. Optional: Wähle einen **primären Kontakt** aus deinen Kontakten
 4. Tippe auf **"Sichern"**
 
-### Keynote bearbeiten
+### Auftritt bearbeiten
 - **Swipe nach rechts** → Bearbeiten
 - **Swipe nach links** → Löschen
 - **Langes Drücken** → Context Menu mit Optionen
 - **Antippen** → Detail-Ansicht
 
 ### Status ändern
-1. Öffne eine Keynote in der Detail-Ansicht
+1. Öffne einen Auftritt in der Detail-Ansicht
 2. Tippe auf **"Status ändern"**
 3. Wähle den nächsten Status aus den erlaubten Optionen
 4. Bei "Termin bestätigt" → Optional "Save the Date" erstellen
@@ -121,10 +121,10 @@ Keine besonderen Build Settings erforderlich. Die Standard-Einstellungen genüge
 - Wird automatisch angeboten beim Status-Wechsel zu "Termin bestätigt"
 - Kann auch manuell in der Detail-Ansicht erstellt werden
 - Enthält alle wichtigen Informationen (Titel, Zeit, Ort, Honorar)
-- Wird automatisch gelöscht wenn Keynote gelöscht wird
+- Wird automatisch gelöscht wenn Auftritt gelöscht wird
 
 ### Verfügbarkeit prüfen
-1. Öffne eine Keynote in der Detail-Ansicht
+1. Öffne einen Auftritt in der Detail-Ansicht
 2. Tippe auf **"Verfügbarkeit prüfen"**
 3. Alle Kalender-Konflikte am gewählten Datum werden angezeigt
 4. Eigener "Save the Date" wird ausgeblendet
@@ -136,7 +136,7 @@ Keine besonderen Build Settings erforderlich. Die Standard-Einstellungen genüge
 ### Statistiken anzeigen
 1. Tippe auf das **Diagramm-Symbol** in der Toolbar
 2. Sieh dir an:
-   - Anzahl Keynotes (gesamt, dieses Jahr, anstehend)
+   - Anzahl Auftritte (gesamt, dieses Jahr, anstehend)
    - Finanz-Übersicht (bestätigt, offen, bezahlt)
    - Status-Verteilung
 
@@ -229,16 +229,16 @@ let container = previewContainer()
 
 Mögliche Features für zukünftige Versionen:
 
-- [ ] **E-Mail-Import mit Claude AI** für automatische Keynote-Erfassung
-- [ ] **PDF Export** von Keynote-Details und Verträgen
+- [ ] **E-Mail-Import mit Claude AI** für automatische Auftrags-Erfassung
+- [ ] **PDF Export** von Auftrags-Details und Verträgen
 - [ ] **CSV Export** für Buchhaltung
 - [ ] **Statistiken Charts** mit Swift Charts
 - [ ] **Erinnerungen** für Follow-ups und Deadlines
-- [ ] **Wiederkehrende Keynotes** / Templates
+- [ ] **Wiederkehrende Auftritte** / Templates
 - [ ] **Dokumente-Anhänge** (Verträge, Präsentationen)
 - [ ] **Reiseplanung-Integration** (Flüge, Hotels)
 - [ ] **Expense Tracking** für Spesen
-- [ ] **Widget** mit anstehenden Keynotes
+- [ ] **Widget** mit anstehenden Auftritten
 - [ ] **Apple Watch App** für Quick-View
 - [ ] **Siri Shortcuts** für schnelle Abfragen
 - [ ] **SharePlay** für gemeinsame Planung mit Team
@@ -248,7 +248,7 @@ Mögliche Features für zukünftige Versionen:
 ### "iCloud Sync funktioniert nicht"
 → Prüfe in der App über das iCloud-Symbol ob du angemeldet bist
 → Gehe zu iOS Einstellungen → [Dein Name] → iCloud → iCloud Drive (muss aktiviert sein)
-→ Stelle sicher, dass "Keynotes" in iCloud Drive aktiviert ist
+→ Stelle sicher, dass "Auftritte" in iCloud Drive aktiviert ist
 → Prüfe deine Internetverbindung
 → Warte ein paar Minuten, Sync ist nicht immer sofort
 → Stelle sicher, dass beide Geräte dieselbe Apple ID nutzen

@@ -1,6 +1,6 @@
 //
 //  KeynoteStatsView.swift
-//  Keynotes
+//  Auftritte
 //
 //  Created by Thomas Süssli on 08.02.2026.
 //
@@ -19,7 +19,7 @@ struct KeynoteStatsView: View {
         List {
             Section("Übersicht") {
                 StatRow(
-                    title: "Gesamt Keynotes",
+                    title: "Gesamt Auftritte",
                     value: "\(stats.totalKeynotes)",
                     icon: "mic.fill",
                     color: .blue

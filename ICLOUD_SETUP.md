@@ -4,7 +4,7 @@
 
 Deine App ist **bereits vollständig für iCloud vorbereitet**! Der Code enthält:
 
-1. **SwiftData mit CloudKit** - `KeynotesApp.swift` ist konfiguriert mit:
+1. **SwiftData mit CloudKit** - `AuftritteApp.swift` ist konfiguriert mit:
    ```swift
    cloudKitDatabase: .automatic
    ```
@@ -25,7 +25,7 @@ Deine App ist **bereits vollständig für iCloud vorbereitet**! Der Code enthäl
 6. Suche nach **"iCloud"** und klicke darauf
 7. In den iCloud Einstellungen:
    - ✅ Aktiviere **"CloudKit"**
-   - Xcode erstellt automatisch einen Container: `iCloud.com.YourTeam.Keynotes`
+   - Xcode erstellt automatisch einen Container: `iCloud.com.YourTeam.Auftritte`
    - Stelle sicher, dass der Container-Checkbox **aktiviert** ist
 
 ### Schritt 2: Background Modes (Optional, aber empfohlen)
@@ -40,9 +40,9 @@ Deine App ist **bereits vollständig für iCloud vorbereitet**! Der Code enthäl
 ### Schritt 3: Testen
 
 1. **Build und Run** auf Gerät 1 (Simulator funktioniert nicht für iCloud!)
-2. Erstelle eine Keynote
+2. Erstelle einen Auftritt
 3. **Build und Run** auf Gerät 2 (mit derselben Apple ID)
-4. Nach 5-30 Sekunden sollte die Keynote auf Gerät 2 erscheinen
+4. Nach 5-30 Sekunden sollte der Auftritt auf Gerät 2 erscheinen
 5. Nutze den **iCloud-Button** (☁️) in der App, um den Status zu prüfen
 
 ## 📱 Wie man es auf dem Gerät testet
@@ -58,12 +58,12 @@ Deine App ist **bereits vollständig für iCloud vorbereitet**! Der Code enthäl
 1. **Gerät 1**: Installiere die App
 2. **Gerät 1**: Öffne die App und tippe auf das iCloud-Symbol ☁️
    - Status sollte "iCloud verfügbar" sein (grün)
-3. **Gerät 1**: Erstelle eine neue Keynote
+3. **Gerät 1**: Erstelle einen neuen Auftritt
 4. **Gerät 2**: Installiere die App
 5. **Gerät 2**: Öffne die App
 6. **Warte 5-30 Sekunden**
-7. **Gerät 2**: Die Keynote sollte automatisch erscheinen!
-8. **Gerät 2**: Ändere die Keynote
+7. **Gerät 2**: Der Auftritt sollte automatisch erscheinen!
+8. **Gerät 2**: Ändere den Auftritt
 9. **Gerät 1**: Nach kurzer Zeit sollte die Änderung sichtbar sein
 
 ## 🔍 Troubleshooting
@@ -119,7 +119,7 @@ Deine App ist **bereits vollständig für iCloud vorbereitet**! Der Code enthäl
 
 **Alles!** 🎉
 
-- Alle Keynotes mit allen Feldern
+- Alle Auftritte mit allen Feldern
 - Status-Änderungen
 - Notizen
 - Kontakt-Verknüpfungen
@@ -156,7 +156,7 @@ ModelConfiguration(
 - Keine manuelle Arbeit nötig!
 
 ### Was passiert intern:
-1. Du speicherst eine Keynote mit SwiftData
+1. Du speicherst einen Auftritt mit SwiftData
 2. SwiftData speichert lokal auf dem Gerät
 3. SwiftData erkennt die Änderung
 4. CloudKit lädt die Änderung zu iCloud hoch
@@ -173,7 +173,7 @@ Falls du bereits eine Version der App ohne iCloud hattest:
 
 1. Die bestehenden lokalen Daten bleiben erhalten
 2. Beim ersten Start mit iCloud werden sie hochgeladen
-3. Andere Geräte erhalten alle bestehenden Keynotes
+3. Andere Geräte erhalten alle bestehenden Auftritte
 4. Keine Daten gehen verloren
 
 ## 📚 Weitere Ressourcen

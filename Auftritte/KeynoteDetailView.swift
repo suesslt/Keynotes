@@ -1,6 +1,6 @@
 //
 //  KeynoteDetailView.swift
-//  Keynotes
+//  Auftritte
 //
 //  Created by Thomas Süssli on 08.02.2026.
 //
@@ -34,7 +34,7 @@ struct KeynoteDetailView: View {
             availabilitySection
             notesSection
         }
-        .navigationTitle(isNewKeynote ? "Neue Keynote" : keynote.eventName)
+        .navigationTitle(isNewKeynote ? "Neuer Auftritt" : keynote.eventName)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .cancellationAction) {

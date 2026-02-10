@@ -1,6 +1,6 @@
 //
 //  KeynoteContact.swift
-//  Keynotes
+//  Auftritte
 //
 //  Created by Thomas Süssli on 09.02.2026.
 //
