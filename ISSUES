@@ -1,0 +1,15 @@
+Issues
+ - List View
+    - Slow reaction when selecting an Auftritt item in the list view.
+    - When items are deleted from list or an item is deselected, the detail view must disappear.
+    - It needs multiple selections of an item in the list, until the selection background is shown.
+    - On iPhone/iPad selection items must have the selected background but foreground color must not be blue.
+    - In case of deselection of an item, the detail view must also disappear.
+ - When entering a new Auftritt, sometimes the the detail view (form) is unexplainably resetted (and emptied).
+ - PDF Report
+    - PDF Report should be in Format Landscape A4 and font 12pt.
+    - For creating the report, no additional view is required. After selecting 'PDF exportieren' from the menu, the PDF should be produced and directly the system dialog shown.
+
+Enhancements.
+ - Aufnahme und Speicherung der Sprache des Auftritts in das Keynote Model. Keine Migration des bestehenden Modelles, alle Items werden neu erfasst. Die Sprache soll in der Detail View als letzte Position unter 'Grundinformationen' eingefügt werden
+ - Die List View soll aufsteigend nach Datum und Uhrzeit des Auftrittes erfolgen

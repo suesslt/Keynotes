@@ -69,11 +69,22 @@ class ContactPickerViewModel: ObservableObject {
         fetchRequest.sortOrder = .familyName
         
         do {
-            var fetchedContacts: [CNContact] = []
-            let contactStore = CNContactStore()
-            
-            try contactStore.enumerateContacts(with: fetchRequest) { contact, _ in
-                fetchedContacts.append(contact)
+            // Move the blocking contact enumeration to a background thread
+            let fetchedContacts = try await withCheckedThrowingContinuation { continuation in
+                Task.detached {
+                    do {
+                        var contacts: [CNContact] = []
+                        let contactStore = CNContactStore()
+                        
+                        try contactStore.enumerateContacts(with: fetchRequest) { contact, _ in
+                            contacts.append(contact)
+                        }
+                        
+                        continuation.resume(returning: contacts)
+                    } catch {
+                        continuation.resume(throwing: error)
+                    }
+                }
             }
             
             contacts = fetchedContacts

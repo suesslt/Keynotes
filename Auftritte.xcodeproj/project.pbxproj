@@ -7,17 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B57AA9A42F39DD9F00582866 /* ICLOUD_SETUP.md in Resources */ = {isa = PBXBuildFile; fileRef = B57AA9A32F39DD9F00582866 /* ICLOUD_SETUP.md */; };
-		B57AA9A62F39DDB300582866 /* ICLOUD_CHECKLIST.md in Resources */ = {isa = PBXBuildFile; fileRef = B57AA9A52F39DDB300582866 /* ICLOUD_CHECKLIST.md */; };
-		B57AA9AA2F39E02500582866 /* CLOUDKIT_DASHBOARD_FAQ.md in Resources */ = {isa = PBXBuildFile; fileRef = B57AA9A92F39E02500582866 /* CLOUDKIT_DASHBOARD_FAQ.md */; };
+		B53EB0F42F3B5D6B00E8DA05 /* ISSUES in Resources */ = {isa = PBXBuildFile; fileRef = B53EB0F32F3B5D6100E8DA05 /* ISSUES */; };
+		B53EB0F62F3C02F700E8DA05 /* ISSUES 2 in Resources */ = {isa = PBXBuildFile; fileRef = B53EB0F52F3C02F700E8DA05 /* ISSUES 2 */; };
 		B58A096A2F38C8B900CF976B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = B58A09692F38C8B900CF976B /* README.md */; };
-		B58A09762F38C99F00CF976B /* QUICKSTART.md in Resources */ = {isa = PBXBuildFile; fileRef = B58A09752F38C99F00CF976B /* QUICKSTART.md */; };
-		B5D07C0A2F3A2022007CB2FF /* CONTACT_SYNC_SOLUTION.md in Resources */ = {isa = PBXBuildFile; fileRef = B5D07C092F3A2022007CB2FF /* CONTACT_SYNC_SOLUTION.md */; };
-		B5D07C0C2F3A204B007CB2FF /* CHANGELOG_CONTACT_SYNC.md in Resources */ = {isa = PBXBuildFile; fileRef = B5D07C0B2F3A204B007CB2FF /* CHANGELOG_CONTACT_SYNC.md */; };
-		B5D07C0E2F3A2087007CB2FF /* ARCHITECTURE_CONTACT_SYNC.md in Resources */ = {isa = PBXBuildFile; fileRef = B5D07C0D2F3A2087007CB2FF /* ARCHITECTURE_CONTACT_SYNC.md */; };
-		B5D07C102F3A20BA007CB2FF /* TESTING_QUICKSTART.md in Resources */ = {isa = PBXBuildFile; fileRef = B5D07C0F2F3A20BA007CB2FF /* TESTING_QUICKSTART.md */; };
-		B5D07C122F3A20E5007CB2FF /* README_IMPLEMENTATION.md in Resources */ = {isa = PBXBuildFile; fileRef = B5D07C112F3A20E5007CB2FF /* README_IMPLEMENTATION.md */; };
-		B5D07C1E2F3A234D007CB2FF /* CLEANUP_GUIDE.md in Resources */ = {isa = PBXBuildFile; fileRef = B5D07C1D2F3A234D007CB2FF /* CLEANUP_GUIDE.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,20 +30,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B57AA9A32F39DD9F00582866 /* ICLOUD_SETUP.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ICLOUD_SETUP.md; sourceTree = "<group>"; };
-		B57AA9A52F39DDB300582866 /* ICLOUD_CHECKLIST.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ICLOUD_CHECKLIST.md; sourceTree = "<group>"; };
-		B57AA9A92F39E02500582866 /* CLOUDKIT_DASHBOARD_FAQ.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CLOUDKIT_DASHBOARD_FAQ.md; sourceTree = "<group>"; };
+		B53EB0F32F3B5D6100E8DA05 /* ISSUES */ = {isa = PBXFileReference; lastKnownFileType = text; path = ISSUES; sourceTree = "<group>"; };
+		B53EB0F52F3C02F700E8DA05 /* ISSUES 2 */ = {isa = PBXFileReference; lastKnownFileType = text; path = "ISSUES 2"; sourceTree = "<group>"; };
 		B58A09332F38C7AD00CF976B /* Auftritte.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Auftritte.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B58A09422F38C7AE00CF976B /* AuftritteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AuftritteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B58A094C2F38C7AE00CF976B /* AuftritteUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AuftritteUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B58A09692F38C8B900CF976B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		B58A09752F38C99F00CF976B /* QUICKSTART.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = QUICKSTART.md; sourceTree = "<group>"; };
-		B5D07C092F3A2022007CB2FF /* CONTACT_SYNC_SOLUTION.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CONTACT_SYNC_SOLUTION.md; sourceTree = "<group>"; };
-		B5D07C0B2F3A204B007CB2FF /* CHANGELOG_CONTACT_SYNC.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG_CONTACT_SYNC.md; sourceTree = "<group>"; };
-		B5D07C0D2F3A2087007CB2FF /* ARCHITECTURE_CONTACT_SYNC.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ARCHITECTURE_CONTACT_SYNC.md; sourceTree = "<group>"; };
-		B5D07C0F2F3A20BA007CB2FF /* TESTING_QUICKSTART.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TESTING_QUICKSTART.md; sourceTree = "<group>"; };
-		B5D07C112F3A20E5007CB2FF /* README_IMPLEMENTATION.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README_IMPLEMENTATION.md; sourceTree = "<group>"; };
-		B5D07C1D2F3A234D007CB2FF /* CLEANUP_GUIDE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CLEANUP_GUIDE.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -117,17 +101,9 @@
 				B58A09452F38C7AE00CF976B /* KeynotesTests */,
 				B58A094F2F38C7AE00CF976B /* KeynotesUITests */,
 				B58A09342F38C7AD00CF976B /* Products */,
-				B58A09752F38C99F00CF976B /* QUICKSTART.md */,
 				B58A09692F38C8B900CF976B /* README.md */,
-				B57AA9A52F39DDB300582866 /* ICLOUD_CHECKLIST.md */,
-				B57AA9A32F39DD9F00582866 /* ICLOUD_SETUP.md */,
-				B57AA9A92F39E02500582866 /* CLOUDKIT_DASHBOARD_FAQ.md */,
-				B5D07C092F3A2022007CB2FF /* CONTACT_SYNC_SOLUTION.md */,
-				B5D07C0B2F3A204B007CB2FF /* CHANGELOG_CONTACT_SYNC.md */,
-				B5D07C0D2F3A2087007CB2FF /* ARCHITECTURE_CONTACT_SYNC.md */,
-				B5D07C0F2F3A20BA007CB2FF /* TESTING_QUICKSTART.md */,
-				B5D07C112F3A20E5007CB2FF /* README_IMPLEMENTATION.md */,
-				B5D07C1D2F3A234D007CB2FF /* CLEANUP_GUIDE.md */,
+				B53EB0F32F3B5D6100E8DA05 /* ISSUES */,
+				B53EB0F52F3C02F700E8DA05 /* ISSUES 2 */,
 			);
 			sourceTree = "<group>";
 		};
@@ -261,17 +237,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B57AA9A62F39DDB300582866 /* ICLOUD_CHECKLIST.md in Resources */,
+				B53EB0F62F3C02F700E8DA05 /* ISSUES 2 in Resources */,
+				B53EB0F42F3B5D6B00E8DA05 /* ISSUES in Resources */,
 				B58A096A2F38C8B900CF976B /* README.md in Resources */,
-				B57AA9AA2F39E02500582866 /* CLOUDKIT_DASHBOARD_FAQ.md in Resources */,
-				B5D07C122F3A20E5007CB2FF /* README_IMPLEMENTATION.md in Resources */,
-				B57AA9A42F39DD9F00582866 /* ICLOUD_SETUP.md in Resources */,
-				B58A09762F38C99F00CF976B /* QUICKSTART.md in Resources */,
-				B5D07C102F3A20BA007CB2FF /* TESTING_QUICKSTART.md in Resources */,
-				B5D07C0A2F3A2022007CB2FF /* CONTACT_SYNC_SOLUTION.md in Resources */,
-				B5D07C0E2F3A2087007CB2FF /* ARCHITECTURE_CONTACT_SYNC.md in Resources */,
-				B5D07C1E2F3A234D007CB2FF /* CLEANUP_GUIDE.md in Resources */,
-				B5D07C0C2F3A204B007CB2FF /* CHANGELOG_CONTACT_SYNC.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,7 +12,7 @@ import ContactsUI
 
 @MainActor
 class ContactsService: ObservableObject {
-    private let contactStore = CNContactStore()
+    nonisolated(unsafe) private let contactStore = CNContactStore()
     @Published var authorizationStatus: CNAuthorizationStatus
     
     init() {
@@ -30,7 +30,7 @@ class ContactsService: ObservableObject {
         }
     }
     
-    func getContact(identifier: String) -> CNContact? {
+    nonisolated func getContact(identifier: String) -> CNContact? {
         let keysToFetch: [CNKeyDescriptor] = [
             CNContactGivenNameKey as CNKeyDescriptor,
             CNContactFamilyNameKey as CNKeyDescriptor,
@@ -40,20 +40,23 @@ class ContactsService: ObservableObject {
             CNContactFormatter.descriptorForRequiredKeys(for: .fullName)
         ]
         
-        do {
-            return try contactStore.unifiedContact(withIdentifier: identifier, keysToFetch: keysToFetch)
-        } catch let error as NSError {
-            // Kontakt existiert nicht mehr (CNErrorCode 200 = record does not exist)
-            if error.domain == CNErrorDomain && error.code == 200 {
-                // Stiller Fehler - Kontakt wurde gelöscht, das ist okay
+        // Execute on a user-initiated queue to avoid priority inversion
+        return DispatchQueue.global(qos: .userInitiated).sync {
+            do {
+                return try contactStore.unifiedContact(withIdentifier: identifier, keysToFetch: keysToFetch)
+            } catch let error as NSError {
+                // Kontakt existiert nicht mehr (CNErrorCode 200 = record does not exist)
+                if error.domain == CNErrorDomain && error.code == 200 {
+                    // Stiller Fehler - Kontakt wurde gelöscht, das ist okay
+                    return nil
+                }
+                print("Fehler beim Laden des Kontakts: \(error)")
                 return nil
             }
-            print("Fehler beim Laden des Kontakts: \(error)")
-            return nil
         }
     }
     
-    func getContactName(identifier: String) -> String {
+    nonisolated func getContactName(identifier: String) -> String {
         guard let contact = getContact(identifier: identifier) else {
             return "Unbekannt"
         }
@@ -62,7 +65,7 @@ class ContactsService: ObservableObject {
         return formatter.string(from: contact) ?? "Unbekannt"
     }
     
-    func getContactEmail(identifier: String) -> String? {
+    nonisolated func getContactEmail(identifier: String) -> String? {
         guard let contact = getContact(identifier: identifier),
               let firstEmail = contact.emailAddresses.first else {
             return nil
@@ -71,7 +74,7 @@ class ContactsService: ObservableObject {
         return firstEmail.value as String
     }
     
-    func getContactPhone(identifier: String) -> String? {
+    nonisolated func getContactPhone(identifier: String) -> String? {
         guard let contact = getContact(identifier: identifier),
               let firstPhone = contact.phoneNumbers.first else {
             return nil
@@ -82,7 +85,7 @@ class ContactsService: ObservableObject {
     
     /// Create a KeynoteContact from a CNContact identifier
     /// This extracts all relevant data and makes it iCloud-syncable
-    func createKeynoteContact(from identifier: String) -> KeynoteContact? {
+    nonisolated func createKeynoteContact(from identifier: String) -> KeynoteContact? {
         guard let contact = getContact(identifier: identifier) else {
             return nil
         }
@@ -103,7 +106,7 @@ class ContactsService: ObservableObject {
     /// Try to find a matching CNContact for a KeynoteContact
     /// This enables "Open in Contacts" feature even on different devices
     /// by matching name and email/phone
-    func findMatchingContact(for keynoteContact: KeynoteContact) -> String? {
+    nonisolated func findMatchingContact(for keynoteContact: KeynoteContact) -> String? {
         // First try the stored local ID (works if on same device)
         if let localID = keynoteContact.localContactID,
            getContact(identifier: localID) != nil {
@@ -121,32 +124,35 @@ class ContactsService: ObservableObject {
         
         let request = CNContactFetchRequest(keysToFetch: keysToFetch)
         
-        do {
-            var foundID: String?
-            try contactStore.enumerateContacts(with: request) { contact, stop in
-                // Try to match by email first (most reliable)
-                if !keynoteContact.email.isEmpty {
-                    for emailAddr in contact.emailAddresses {
-                        if (emailAddr.value as String).lowercased() == keynoteContact.email.lowercased() {
-                            foundID = contact.identifier
-                            stop.pointee = true
-                            return
+        // Execute on a user-initiated queue to avoid priority inversion
+        return DispatchQueue.global(qos: .userInitiated).sync {
+            do {
+                var foundID: String?
+                try contactStore.enumerateContacts(with: request) { contact, stop in
+                    // Try to match by email first (most reliable)
+                    if !keynoteContact.email.isEmpty {
+                        for emailAddr in contact.emailAddresses {
+                            if (emailAddr.value as String).lowercased() == keynoteContact.email.lowercased() {
+                                foundID = contact.identifier
+                                stop.pointee = true
+                                return
+                            }
                         }
                     }
+                    
+                    // Fall back to name matching (less reliable)
+                    let formatter = CNContactFormatter()
+                    if let contactName = formatter.string(from: contact),
+                       contactName == keynoteContact.fullName {
+                        foundID = contact.identifier
+                        stop.pointee = true
+                    }
                 }
-                
-                // Fall back to name matching (less reliable)
-                let formatter = CNContactFormatter()
-                if let contactName = formatter.string(from: contact),
-                   contactName == keynoteContact.fullName {
-                    foundID = contact.identifier
-                    stop.pointee = true
-                }
+                return foundID
+            } catch {
+                print("Fehler beim Suchen des Kontakts: \(error)")
+                return nil
             }
-            return foundID
-        } catch {
-            print("Fehler beim Suchen des Kontakts: \(error)")
-            return nil
         }
     }
 }

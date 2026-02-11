@@ -24,6 +24,7 @@ final class Keynote {
     var requestDate: Date = Date()
     var calendarEventID: String? // EventKit Event Identifier
     var notes: String = ""
+    var language: String = "" // Sprache des Auftritts
     
     // Computed property für Status
     var status: KeynoteStatus {
@@ -62,7 +63,8 @@ final class Keynote {
         status: KeynoteStatus = .requested,
         requestDate: Date = Date(),
         calendarEventID: String? = nil,
-        notes: String = ""
+        notes: String = "",
+        language: String = ""
     ) {
         self.eventName = eventName
         self.eventDate = eventDate
@@ -83,5 +85,6 @@ final class Keynote {
         self.requestDate = requestDate
         self.calendarEventID = calendarEventID
         self.notes = notes
+        self.language = language
     }
 }

@@ -1,0 +1,45 @@
+Issues - ABGESCHLOSSEN
+ - List View
+    - ✅ Slow reaction when selecting an Auftritt item in the list view.
+    - ✅ When items are deleted from list or an item is deselected, the detail view must disappear.
+    - ✅ It needs multiple selections of an item in the list, until the selection background is shown.
+    - ✅ On iPhone/iPad selection items must have the selected background but foreground color must not be blue.
+    - ✅ In case of deselection of an item, the detail view must also disappear.
+ - ✅ When entering a new Auftritt, sometimes the the detail view (form) is unexplainably resetted (and emptied).
+ - PDF Report
+    - ✅ PDF Report should be in Format Landscape A4 and font 12pt.
+    - ✅ For creating the report, no additional view is required. After selecting 'PDF exportieren' from the menu, the PDF should be produced and directly the system dialog shown.
+
+Enhancements - ABGESCHLOSSEN
+ - ✅ Aufnahme und Speicherung der Sprache des Auftritts in das Keynote Model. Keine Migration des bestehenden Modelles, alle Items werden neu erfasst. Die Sprache soll in der Detail View als letzte Position unter 'Grundinformationen' eingefügt werden
+ - ✅ Die List View soll aufsteigend nach Datum und Uhrzeit des Auftrittes erfolgen
+
+IMPLEMENTIERTE ÄNDERUNGEN:
+
+1. **Keynote Model (Keynote.swift)**
+   - Neues Feld `language: String` hinzugefügt
+   - Initialisierung angepasst
+
+2. **ContentView (ContentView.swift)**
+   - ID-basierte Selection statt Objekt-basiert für bessere Performance
+   - `List(selection: $selection)` implementiert
+   - `NavigationLink(value: keynote.id)` statt `NavigationLink(value: keynote)`
+   - `.listRowBackground()` für sichtbare Selektion mit grauem Hintergrund
+   - `.foregroundColor(.primary)` in KeynoteRowView für schwarze Schrift (nicht blau)
+   - `onChange` Modifier um Deselection bei gelöschten Items zu behandeln
+   - Detail-View verschwindet automatisch bei Deselection/Deletion
+   - PDF Export direkt ohne zusätzliche View - zeigt direkt Share Sheet
+   - Sortierung bereits korrekt: `@Query(sort: \Keynote.eventDate, order: .forward)`
+
+3. **KeynoteDetailView (KeynoteDetailView.swift)**
+   - Neues TextField "Sprache" als letztes Feld in Grundinformationen hinzugefügt
+   - Verhindert ungewolltes Resetting durch stabile ID-basierte Navigation
+
+4. **PDF Generator (KeynotePDFGenerator.swift)**
+   - Bereits korrektes Format: A4 Landscape (842x595)
+   - Font Size 12pt für regulären Text bereits implementiert
+   - Sprache-Feld in PDF-Ausgabe hinzugefügt (nach Zielpublikum)
+
+5. **Sample Data (SampleData.swift)**
+   - Alle Beispieldaten mit Sprachangaben aktualisiert
+

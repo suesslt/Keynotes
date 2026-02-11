@@ -24,6 +24,8 @@ struct KeynoteDetailView: View {
     @State private var isCheckingAvailability = false
     
     var isNewKeynote: Bool
+    var onCancel: (() -> Void)? = nil
+    var onSave: (() -> Void)? = nil
     
     var body: some View {
         Form {
@@ -40,7 +42,7 @@ struct KeynoteDetailView: View {
             ToolbarItem(placement: .cancellationAction) {
                 if isNewKeynote {
                     Button("Abbrechen") {
-                        dismiss()
+                        onCancel?()
                     }
                 }
             }
@@ -90,6 +92,8 @@ struct KeynoteDetailView: View {
                     .frame(width: 80)
                 Text("Min.")
             }
+            
+            TextField("Sprache", text: $keynote.language)
         }
     }
     
@@ -220,14 +224,19 @@ struct KeynoteDetailView: View {
     
     private func saveNewKeynote() {
         modelContext.insert(keynote)
-        dismiss()
+        onSave?()
     }
     
     private func checkAvailability() {
         isCheckingAvailability = true
         
         Task {
-            await calendarService.requestAccess()
+            let hasAccess = await calendarService.requestAccess()
+            
+            guard hasAccess else {
+                isCheckingAvailability = false
+                return
+            }
             
             let events = calendarService.checkAvailability(
                 for: keynote.eventDate,

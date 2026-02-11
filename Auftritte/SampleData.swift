@@ -22,7 +22,8 @@ extension Keynote {
             targetAudience: "Führungskräfte und IT-Entscheider",
             location: "Zürich, Switzerland",
             status: .dateConfirmedFeeOffered,
-            requestDate: Date().addingTimeInterval(-60 * 60 * 24 * 10)
+            requestDate: Date().addingTimeInterval(-60 * 60 * 24 * 10),
+            language: "Deutsch"
         ),
         Keynote(
             eventName: "Leadership Summit 2026",
@@ -35,7 +36,8 @@ extension Keynote {
             targetAudience: "C-Level Executives",
             location: "Genf, Switzerland",
             status: .feeConfirmed,
-            requestDate: Date().addingTimeInterval(-60 * 60 * 24 * 20)
+            requestDate: Date().addingTimeInterval(-60 * 60 * 24 * 20),
+            language: "Englisch"
         ),
         Keynote(
             eventName: "Innovation Day",
@@ -48,7 +50,8 @@ extension Keynote {
             targetAudience: "Produktmanager und Entwickler",
             location: "Basel, Switzerland",
             status: .paid,
-            requestDate: Date().addingTimeInterval(-60 * 60 * 24 * 90)
+            requestDate: Date().addingTimeInterval(-60 * 60 * 24 * 90),
+            language: "Deutsch"
         ),
         Keynote(
             eventName: "Digital Marketing Forum",
@@ -61,7 +64,8 @@ extension Keynote {
             targetAudience: "Marketing Professionals",
             location: "Bern, Switzerland",
             status: .contractSigned,
-            requestDate: Date().addingTimeInterval(-60 * 60 * 24 * 5)
+            requestDate: Date().addingTimeInterval(-60 * 60 * 24 * 5),
+            language: "Deutsch"
         ),
         Keynote(
             eventName: "Startup Accelerator Event",
@@ -75,7 +79,8 @@ extension Keynote {
             location: "Lausanne, Switzerland",
             status: .requested,
             requestDate: Date().addingTimeInterval(-60 * 60 * 24 * 2),
-            notes: "Anfrage per E-Mail von Max Mustermann erhalten. Noch Details zum genauen Zeitpunkt klären."
+            notes: "Anfrage per E-Mail von Max Mustermann erhalten. Noch Details zum genauen Zeitpunkt klären.",
+            language: "Französisch"
         ),
         Keynote(
             eventName: "Healthcare Innovation Congress",
@@ -88,7 +93,8 @@ extension Keynote {
             targetAudience: "Ärzte und Klinikmanagement",
             location: "Luzern, Switzerland",
             status: .closed,
-            requestDate: Date().addingTimeInterval(-60 * 60 * 24 * 120)
+            requestDate: Date().addingTimeInterval(-60 * 60 * 24 * 120),
+            language: "Deutsch"
         ),
         Keynote(
             eventName: "Sustainability Summit",
@@ -101,7 +107,8 @@ extension Keynote {
             targetAudience: "CSR Manager und Nachhaltigkeitsexperten",
             location: "St. Gallen, Switzerland",
             status: .contentAgreed,
-            requestDate: Date().addingTimeInterval(-60 * 60 * 24 * 15)
+            requestDate: Date().addingTimeInterval(-60 * 60 * 24 * 15),
+            language: "Deutsch & Englisch"
         ),
         Keynote(
             eventName: "Banking Transformation Forum",
@@ -114,7 +121,8 @@ extension Keynote {
             targetAudience: "Bank-Executives und Fintech-Experten",
             location: "Zürich, Switzerland",
             status: .completedInvoiced,
-            requestDate: Date().addingTimeInterval(-60 * 60 * 24 * 75)
+            requestDate: Date().addingTimeInterval(-60 * 60 * 24 * 75),
+            language: "Englisch"
         )
     ]
     

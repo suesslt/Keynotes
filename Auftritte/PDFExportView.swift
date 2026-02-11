@@ -87,7 +87,7 @@ struct PDFExportView: View {
             // Kleine Verzögerung für UI-Feedback
             try? await Task.sleep(nanoseconds: 500_000_000)
             
-            let data = await KeynotePDFGenerator.generatePDF(
+            let data = KeynotePDFGenerator.generatePDF(
                 keynotes: keynotes,
                 title: documentTitle,
                 generationDate: Date()
@@ -97,38 +97,6 @@ struct PDFExportView: View {
             isGenerating = false
             showingShareSheet = true
         }
-    }
-}
-
-// MARK: - Share Sheet (UIKit Integration)
-
-/// UIKit Share Sheet für SwiftUI
-struct ShareSheet: UIViewControllerRepresentable {
-    let items: [Any]
-    
-    func makeUIViewController(context: Context) -> UIActivityViewController {
-        let controller = UIActivityViewController(activityItems: items, applicationActivities: nil)
-        
-        // iPad-spezifische Konfiguration für Popover
-        if let popoverController = controller.popoverPresentationController {
-            popoverController.sourceView = context.coordinator.sourceView
-            popoverController.sourceRect = context.coordinator.sourceView.bounds
-            popoverController.permittedArrowDirections = .any
-        }
-        
-        return controller
-    }
-    
-    func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {
-        // Keine Updates erforderlich
-    }
-    
-    func makeCoordinator() -> Coordinator {
-        Coordinator()
-    }
-    
-    class Coordinator {
-        let sourceView = UIView(frame: .zero)
     }
 }
 
