@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B53EB0F42F3B5D6B00E8DA05 /* ISSUES in Resources */ = {isa = PBXBuildFile; fileRef = B53EB0F32F3B5D6100E8DA05 /* ISSUES */; };
-		B53EB0F62F3C02F700E8DA05 /* ISSUES 2 in Resources */ = {isa = PBXBuildFile; fileRef = B53EB0F52F3C02F700E8DA05 /* ISSUES 2 */; };
+		B53EB0F82F3C1D6500E8DA05 /* TEST_SCRIPT in Resources */ = {isa = PBXBuildFile; fileRef = B53EB0F72F3C1D5D00E8DA05 /* TEST_SCRIPT */; };
 		B58A096A2F38C8B900CF976B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = B58A09692F38C8B900CF976B /* README.md */; };
 /* End PBXBuildFile section */
 
@@ -31,7 +31,7 @@
 
 /* Begin PBXFileReference section */
 		B53EB0F32F3B5D6100E8DA05 /* ISSUES */ = {isa = PBXFileReference; lastKnownFileType = text; path = ISSUES; sourceTree = "<group>"; };
-		B53EB0F52F3C02F700E8DA05 /* ISSUES 2 */ = {isa = PBXFileReference; lastKnownFileType = text; path = "ISSUES 2"; sourceTree = "<group>"; };
+		B53EB0F72F3C1D5D00E8DA05 /* TEST_SCRIPT */ = {isa = PBXFileReference; lastKnownFileType = text; path = TEST_SCRIPT; sourceTree = "<group>"; };
 		B58A09332F38C7AD00CF976B /* Auftritte.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Auftritte.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B58A09422F38C7AE00CF976B /* AuftritteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AuftritteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B58A094C2F38C7AE00CF976B /* AuftritteUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AuftritteUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -103,7 +103,7 @@
 				B58A09342F38C7AD00CF976B /* Products */,
 				B58A09692F38C8B900CF976B /* README.md */,
 				B53EB0F32F3B5D6100E8DA05 /* ISSUES */,
-				B53EB0F52F3C02F700E8DA05 /* ISSUES 2 */,
+				B53EB0F72F3C1D5D00E8DA05 /* TEST_SCRIPT */,
 			);
 			sourceTree = "<group>";
 		};
@@ -237,7 +237,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B53EB0F62F3C02F700E8DA05 /* ISSUES 2 in Resources */,
+				B53EB0F82F3C1D6500E8DA05 /* TEST_SCRIPT in Resources */,
 				B53EB0F42F3B5D6B00E8DA05 /* ISSUES in Resources */,
 				B58A096A2F38C8B900CF976B /* README.md in Resources */,
 			);

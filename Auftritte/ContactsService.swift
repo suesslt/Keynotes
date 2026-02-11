@@ -40,19 +40,16 @@ class ContactsService: ObservableObject {
             CNContactFormatter.descriptorForRequiredKeys(for: .fullName)
         ]
         
-        // Execute on a user-initiated queue to avoid priority inversion
-        return DispatchQueue.global(qos: .userInitiated).sync {
-            do {
-                return try contactStore.unifiedContact(withIdentifier: identifier, keysToFetch: keysToFetch)
-            } catch let error as NSError {
-                // Kontakt existiert nicht mehr (CNErrorCode 200 = record does not exist)
-                if error.domain == CNErrorDomain && error.code == 200 {
-                    // Stiller Fehler - Kontakt wurde gelöscht, das ist okay
-                    return nil
-                }
-                print("Fehler beim Laden des Kontakts: \(error)")
+        do {
+            return try contactStore.unifiedContact(withIdentifier: identifier, keysToFetch: keysToFetch)
+        } catch let error as NSError {
+            // Kontakt existiert nicht mehr (CNErrorCode 200 = record does not exist)
+            if error.domain == CNErrorDomain && error.code == 200 {
+                // Stiller Fehler - Kontakt wurde gelöscht, das ist okay
                 return nil
             }
+            print("Fehler beim Laden des Kontakts: \(error)")
+            return nil
         }
     }
     
@@ -124,35 +121,32 @@ class ContactsService: ObservableObject {
         
         let request = CNContactFetchRequest(keysToFetch: keysToFetch)
         
-        // Execute on a user-initiated queue to avoid priority inversion
-        return DispatchQueue.global(qos: .userInitiated).sync {
-            do {
-                var foundID: String?
-                try contactStore.enumerateContacts(with: request) { contact, stop in
-                    // Try to match by email first (most reliable)
-                    if !keynoteContact.email.isEmpty {
-                        for emailAddr in contact.emailAddresses {
-                            if (emailAddr.value as String).lowercased() == keynoteContact.email.lowercased() {
-                                foundID = contact.identifier
-                                stop.pointee = true
-                                return
-                            }
+        do {
+            var foundID: String?
+            try contactStore.enumerateContacts(with: request) { contact, stop in
+                // Try to match by email first (most reliable)
+                if !keynoteContact.email.isEmpty {
+                    for emailAddr in contact.emailAddresses {
+                        if (emailAddr.value as String).lowercased() == keynoteContact.email.lowercased() {
+                            foundID = contact.identifier
+                            stop.pointee = true
+                            return
                         }
                     }
-                    
-                    // Fall back to name matching (less reliable)
-                    let formatter = CNContactFormatter()
-                    if let contactName = formatter.string(from: contact),
-                       contactName == keynoteContact.fullName {
-                        foundID = contact.identifier
-                        stop.pointee = true
-                    }
                 }
-                return foundID
-            } catch {
-                print("Fehler beim Suchen des Kontakts: \(error)")
-                return nil
+                
+                // Fall back to name matching (less reliable)
+                let formatter = CNContactFormatter()
+                if let contactName = formatter.string(from: contact),
+                   contactName == keynoteContact.fullName {
+                    foundID = contact.identifier
+                    stop.pointee = true
+                }
             }
+            return foundID
+        } catch {
+            print("Fehler beim Suchen des Kontakts: \(error)")
+            return nil
         }
     }
 }

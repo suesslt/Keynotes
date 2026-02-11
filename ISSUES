@@ -1,4 +1,8 @@
 Issues
+ - 
+
+
+Issues
  - List View
     - Slow reaction when selecting an Auftritt item in the list view.
     - When items are deleted from list or an item is deselected, the detail view must disappear.
